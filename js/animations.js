@@ -11,8 +11,7 @@
   if (!reduceMotion) {
     lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
     window.lenis = lenis;
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
     gsap.ticker.lagSmoothing(0);
   }
 
@@ -31,7 +30,6 @@
       .from('.hero-eyebrow', { y: 24, opacity: 0, duration: 0.6 }, 0)
       .from('.hero-text .word', { y: 70, rotateX: -45, opacity: 0, duration: 0.85, stagger: 0.09 }, 0.1)
       .from('.hero-sub', { y: 30, opacity: 0, duration: 0.7 }, 0.55)
-      .from('.hero-buttons > *', { y: 24, opacity: 0, duration: 0.6, stagger: 0.1 }, 0.7)
       .from('.hero-stat', { y: 24, opacity: 0, duration: 0.6, stagger: 0.1 }, 0.82)
       .from('.hero-image-wrapper', { y: 50, opacity: 0, scale: 0.92, duration: 1 }, 0.3)
       .from('.hero-float-card', { y: -18, opacity: 0, duration: 0.5, stagger: 0.12 }, 0.9)

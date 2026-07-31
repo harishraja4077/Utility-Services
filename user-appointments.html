@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Appointments - Stackly</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="css/dashboard.css?v=2">
-  <link rel="stylesheet" href="css/responsive.css?v=2">
+  <link rel="stylesheet" href="css/dashboard.css?v=12">
+  <link rel="stylesheet" href="css/responsive.css?v=12">
   <style>
     .calendar-header { display:flex;align-items:center;justify-content:space-between;margin-bottom:24px }
     .calendar-header h3 { font-size:1.2rem;color:#1a1a2e;font-weight:700 }
@@ -21,7 +21,7 @@
   <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-brand">
-      <a href="index.html"><img src="images/logo.webp" alt="Stackly" class="logo"></a>
+      <a href="index.html"><img loading="lazy" decoding="async" src="images/logo.webp" alt="Stackly" class="logo"></a>
     </div>
     <div class="sidebar-user">
       <div class="sidebar-user-avatar" id="sidebarAvatar">RK</div>
@@ -196,6 +196,12 @@ document.addEventListener('DOMContentLoaded', () => {
     sidebar.classList.toggle('open', open);
     sidebarBackdrop.classList.toggle('show', open);
     if (menuToggle) menuToggle.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('no-scroll', open);
+    document.documentElement.classList.toggle('no-scroll', open);
+    if (window.lenis) {
+      if (open) window.lenis.stop();
+      else window.lenis.start();
+    }
   };
   if (menuToggle) {
     menuToggle.setAttribute('aria-label', 'Toggle sidebar');

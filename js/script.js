@@ -35,6 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
       navLinks.classList.toggle('active', open);
       hamburger.setAttribute('aria-expanded', String(open));
       document.body.classList.toggle('no-scroll', open);
+      document.documentElement.classList.toggle('no-scroll', open);
+      if (window.lenis) {
+        if (open) window.lenis.stop();
+        else window.lenis.start();
+      }
     };
     hamburger.addEventListener('click', () => {
       setMenu(!navLinks.classList.contains('active'));
@@ -111,22 +116,20 @@ document.addEventListener('DOMContentLoaded', () => {
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const btn = contactForm.querySelector('.btn-primary');
-      const originalText = btn.innerHTML;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-      btn.disabled = true;
-
-      setTimeout(() => {
-        btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-        btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
-
-        setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.style.background = '';
-          btn.disabled = false;
-          contactForm.reset();
-        }, 2500);
-      }, 1500);
+      const errorEl = document.getElementById('contactError');
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const message = document.getElementById('contactMessage').value.trim();
+      const setError = (msg) => {
+        errorEl.querySelector('span').textContent = msg;
+        errorEl.style.display = 'flex';
+      };
+      if (!name) return setError('Please enter your full name.');
+      if (!email) return setError('Please enter your email address.');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setError('Please enter a valid email address.');
+      if (!message) return setError('Please enter your message.');
+      errorEl.style.display = 'none';
+      window.location.href = '404.html';
     });
   }
 

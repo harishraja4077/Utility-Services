@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us - Stackly</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css?v=2">
-  <link rel="stylesheet" href="css/responsive.css?v=2">
+  <link rel="stylesheet" href="css/style.css?v=12">
+  <link rel="stylesheet" href="css/responsive.css?v=12">
 </head>
 <body>
 
@@ -18,7 +18,7 @@
   <div class="container">
     <nav class="navbar">
       <a href="index.html" class="logo">
-        <img src="images/logo.webp" alt="Stackly">
+        <img loading="lazy" decoding="async" src="images/logo.webp" alt="Stackly">
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
@@ -93,26 +93,27 @@
       <div class="contact-form-wrapper animate-on-scroll fade-in-right">
         <h3>Send Us a Message</h3>
         <p>Fill out the form below and our team will get back to you within 24 hours.</p>
-        <form id="contactForm">
+        <form id="contactForm" novalidate>
+          <div class="form-error" id="contactError" style="display:none;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);padding:14px 18px;border-radius:12px;margin-bottom:20px;color:#ef4444;font-size:0.9rem;align-items:center;gap:10px"><i class="fas fa-exclamation-circle" style="font-size:1.1rem"></i> <span></span></div>
           <div class="form-row">
             <div class="form-group">
               <label>Full Name</label>
-              <input type="text" placeholder="John Doe" required>
+              <input type="text" placeholder="John Doe" required id="contactName">
             </div>
             <div class="form-group">
               <label>Email Address</label>
-              <input type="email" placeholder="john@example.com" required>
+              <input type="email" placeholder="john@example.com" required id="contactEmail">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label>Phone Number</label>
-              <input type="tel" placeholder="+91 70107 92745">
+              <input type="tel" placeholder="+91 70107 92745" id="contactPhone">
             </div>
             <div class="form-group">
               <label>Service Needed</label>
-              <select>
-                <option>Select a service</option>
+              <select id="contactService">
+                <option value="">Select a service</option>
                 <option>Electrical</option>
                 <option>Plumbing / Water</option>
                 <option>Gas Services</option>
@@ -125,9 +126,9 @@
           </div>
           <div class="form-group">
             <label>Message</label>
-            <textarea placeholder="Tell us about your requirements..." required></textarea>
+            <textarea placeholder="Tell us about your requirements..." required id="contactMessage"></textarea>
           </div>
-          <a href="404.html" class="btn-primary" style="width:100%;justify-content:center;text-decoration:none">Send Message <i class="fas fa-paper-plane"></i></a>
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center">Send Message <i class="fas fa-paper-plane"></i></button>
         </form>
       </div>
     </div>
@@ -237,7 +238,7 @@
         </div>
       </div>
       <div class="why-image animate-on-scroll fade-in-right">
-        <img src="images/1600880292203-757bb62b4baf.webp" alt="Working Hours">
+        <img loading="lazy" decoding="async" src="images/1600880292203-757bb62b4baf.webp" alt="Working Hours">
         <div class="why-experience">
           <h3>24/7</h3>
           <p>Emergency Support</p>
@@ -277,7 +278,7 @@
     <div class="footer-grid">
       <div class="footer-about">
         <a href="index.html" class="logo">
-          <img src="images/logo.webp" alt="Stackly">
+          <img loading="lazy" decoding="async" src="images/logo.webp" alt="Stackly">
         </a>
         <p>Your trusted partner for comprehensive utility services. We deliver reliable, safe, and sustainable solutions for homes and businesses across the region.</p>
         <div class="footer-social">
@@ -324,7 +325,7 @@
   </div>
 </footer>
 
-<button class="go-top" id="goTop"><i class="fas fa-arrow-up"></i></button>
+<button class="go-top" aria-label="Back to top" id="goTop"><i class="fas fa-arrow-up"></i></button>
 
 <script>
 function validateNewsletter(e, id) {
@@ -342,6 +343,6 @@ function validateNewsletter(e, id) {
 }
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
-<script src="js/script.js?v=2"></script>
+<script src="js/script.js?v=12"></script>
 </body>
 </html>

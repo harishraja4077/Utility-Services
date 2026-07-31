@@ -8,7 +8,7 @@ ul { list-style: none; }
 /* ===== SIDEBAR ===== */
 .sidebar { width: 270px; background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%); position: fixed; top: 0; left: 0; height: 100vh; z-index: 1000; display: flex; flex-direction: column; transition: all 0.3s ease; box-shadow: 4px 0 20px rgba(0,0,0,0.1); }
 .sidebar-brand { padding: 25px 20px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; gap: 12px; }
-.sidebar-brand .logo { height: 100px; width: auto; }
+.sidebar-brand .logo { height: 120px; width: auto; }
 .sidebar-brand span { font-size: 1.4rem; font-weight: 800; color: #fff; }
 .sidebar-brand span span { color: #f59e0b; }
 
@@ -134,16 +134,27 @@ ul { list-style: none; }
   .card-body { padding: 18px; }
   .card-header { padding: 16px 18px; }
   .service-item, .invoice-item, .appointment-item { flex-wrap: wrap; gap: 12px; }
+  .service-item .status-badge, .appointment-item .status-badge { margin-left: auto; }
+  .invoice-item .invoice-amount { margin-left: auto; }
   .calendar-header { flex-wrap: wrap; gap: 12px; }
 }
 
 @media (max-width: 575px) {
   .topbar-right { gap: 12px; }
   .topbar-notif { width: 44px; height: 44px; }
+  .topbar { gap: 12px; }
+  .topbar-left { gap: 12px; min-width: 0; }
+  .topbar-left > div { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .topbar-left h2 { font-size: 1.1rem; }
+  .topbar-right { flex-shrink: 0; }
   .dashboard-table th, .dashboard-table td { padding: 12px; }
   .report-card { padding: 20px 16px; }
   .metric-row { flex-wrap: wrap; gap: 6px; }
+}
+
+@media (max-width: 420px) {
+  .topbar-mail { display: none; }
+  .topbar-left h2 { font-size: 1rem; }
 }
 
 /* ===== SERVICE LIST ===== */

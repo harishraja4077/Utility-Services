@@ -7,7 +7,7 @@
    ===================================================================== */
 
 /* ---- Helpers ---- */
-body.no-scroll { overflow: hidden; }
+html.no-scroll, body.no-scroll { overflow: hidden; }
 
 /* ===== DESKTOP 1200-1439 ===== */
 @media (min-width: 1200px) and (max-width: 1439px) {
@@ -25,7 +25,7 @@ body.no-scroll { overflow: hidden; }
   .section-title h2 { font-size: 2.1rem; }
   .hero-text h1 { font-size: 2.9rem; }
   .hero-text p { font-size: 1.05rem; }
-  .page-header { min-height: 42vh; }
+  section.page-header { min-height: 42vh; }
   .page-header-content { padding-top: 90px; padding-bottom: 30px; }
   .page-header-content h1 { font-size: 2.6rem; }
   .footer-grid { gap: 36px; }
@@ -63,7 +63,7 @@ body.no-scroll { overflow: hidden; }
   .hero-buttons .btn-primary, .hero-buttons .btn-secondary { width: 100%; justify-content: center; }
   .hero-stat h3 { font-size: 1.6rem; }
   .logo { font-size: 1.3rem; }
-  .logo img { height: 60px; }
+  .logo img { height: 76px; }
 
   .why-experience { right: 20px; bottom: -20px; padding: 22px; }
   .why-feature { padding: 16px; }
@@ -193,4 +193,131 @@ body.no-scroll { overflow: hidden; }
   .dashboard-table th, .dashboard-table td { padding: 12px; }
   .appointment-date .day { font-size: 1.1rem; }
   .service-item-info h4 { font-size: 0.88rem; }
+}
+
+/* =====================================================================
+   PREMIUM MOBILE POLISH
+   Mobile/tablet premium experience pass. Loaded last on every page.
+   ===================================================================== */
+
+/* ---- Global touch + focus ---- */
+html { -webkit-text-size-adjust: 100%; }
+body { -webkit-tap-highlight-color: transparent; }
+input, select, textarea, button { font-family: inherit; }
+input:not([type="checkbox"]):not([type="radio"]), textarea { -webkit-appearance: none; appearance: none; }
+:focus-visible { outline: 3px solid rgba(245, 158, 11, 0.85); outline-offset: 3px; }
+section[id] { scroll-margin-top: 84px; }
+
+/* Premium buttons: consistent height + tactile feedback */
+.btn-primary, .btn-secondary { min-height: 48px; }
+.btn-primary:active, .btn-secondary:active,
+.nav-cta:active, .nav-signup:active,
+.newsletter-form button:active, .search-box button:active,
+.blog-category-btn:active, .pagination a:active { transform: scale(0.97); }
+
+/* Card press feedback on touch devices */
+.service-card:active, .bento-card:active, .testimonial-card:active,
+.pricing-card:active, .blog-card:active, .office-card:active,
+.team-card:active, .mv-card:active, .reveal-item:active, .t-card:active,
+.stat-card:active, .why-feature:active, .contact-info-card:active,
+.flip-card:active, .reveal-card:active { transform: scale(0.98); }
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-links.active, .nav-links.active > li { animation: none !important; }
+}
+
+/* ===== TABLET + MOBILE 768-991: frosted nav, premium menu, hero image, off-canvas dashboards ===== */
+@media (max-width: 991px) {
+  html, body { overflow-x: hidden; overflow-x: clip; }
+
+  .header {
+    background: rgba(22, 24, 46, 0.55);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    height: 80px;
+    box-sizing: border-box;
+    padding: 2px 0;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
+  }
+  .header.scrolled { background: rgba(22, 24, 46, 0.9); height: 76px; box-sizing: border-box; padding: 0px 0; }
+  .logo img { height: 76px; }
+
+  input, select, textarea { font-size: 16px; }
+  .form-group input, .form-group textarea, .form-group select,
+  .search-box input, .search-box button, .newsletter-form button,
+  .newsletter-form input { min-height: 48px; }
+
+  /* Premium full-screen menu: frosted glass + staggered entrance */
+  .nav-links {
+    background: #14162c;
+    backdrop-filter: blur(30px) saturate(160%);
+    -webkit-backdrop-filter: blur(30px) saturate(160%);
+  }
+  .nav-links.active { animation: menuDrop 0.4s cubic-bezier(0.4, 0, 0.2, 1) both; }
+  .nav-links.active > li { animation: menuFade 0.5s cubic-bezier(0.4, 0, 0.2, 1) both; }
+  .nav-links.active > li:nth-child(1) { animation-delay: 0.03s; }
+  .nav-links.active > li:nth-child(2) { animation-delay: 0.08s; }
+  .nav-links.active > li:nth-child(3) { animation-delay: 0.13s; }
+  .nav-links.active > li:nth-child(4) { animation-delay: 0.18s; }
+  .nav-links.active > li:nth-child(5) { animation-delay: 0.23s; }
+  .nav-links.active > li:nth-child(6) { animation-delay: 0.28s; }
+  .nav-links.active > li:nth-child(7) { animation-delay: 0.33s; }
+  .nav-links a { padding: 14px 30px; font-size: 1.12rem; border-radius: 16px; min-width: 200px; text-align: center; }
+  .nav-links a::after { display: none; }
+  .nav-links a:hover, .nav-links a.active { background: rgba(245, 158, 11, 0.14); color: #fff; }
+  .nav-links .nav-cta, .nav-links .nav-signup { padding: 14px 40px !important; }
+  .nav-links .nav-auth { margin-left: 0; }
+  .hamburger.active { background: rgba(255, 255, 255, 0.2); border-color: #f59e0b; }
+
+  /* Hero: image below content, centered, never cropped */
+  .hero-content { gap: 56px; }
+  .hero-image { display: flex; padding-bottom: 44px; }
+  .hero-image-wrapper { max-width: 440px; }
+  .hero-badge { top: -16px; right: 12px; width: 88px; height: 88px; padding: 12px; font-size: 0.78rem; }
+  .hero-badge span { font-size: 1.5rem; }
+  .hero-float-card { padding: 11px 14px; gap: 9px; border-radius: 14px; }
+  .hero-float-card > i { font-size: 1.1rem; }
+  .hero-float-card strong { font-size: 0.88rem; }
+  .hero-float-card small { font-size: 0.7rem; }
+  .hero-float-card.fc-1 { right: 8px; top: 90px; }
+  .hero-float-card.fc-2 { left: 8px; bottom: 14%; }
+  .hero-float-card.fc-3 { display: none; }
+  .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; max-width: 430px; margin: 40px auto 0; }
+
+  /* Dashboard: transform-based off-canvas sidebar */
+  .sidebar { width: 270px; transform: translateX(-105%); transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 12px 0 40px rgba(0, 0, 0, 0.25); }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-backdrop { backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+  .sidebar-nav-item { padding: 14px 16px; }
+}
+
+@keyframes menuDrop { from { opacity: 0; transform: translateY(-18px) scale(0.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes menuFade { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== MOBILE 320-575: compact hero, full-width CTAs, centered footer ===== */
+@media (max-width: 575px) {
+  .hero-stats { gap: 6px; }
+  .hero-stat h3 { font-size: 1.4rem; }
+  .hero-stat p { font-size: 0.72rem; line-height: 1.35; }
+  .hero-image-wrapper { max-width: 100%; }
+  .hero-badge { width: 76px; height: 76px; font-size: 0.7rem; }
+  .hero-badge span { font-size: 1.3rem; }
+
+  .services, .why-choose, .process, .testimonials, .pricing, .blog-section,
+  .cta-section, .about-intro, .mission-vision, .team-section, .timeline,
+  .services-detailed, .contact-info-section, .map-section, .blog-page,
+  .split-section, .stats-section, .timeline-section { padding: 64px 0; }
+
+  .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+
+  /* Footer: single column, centered, large tap targets */
+  .footer-grid { text-align: center; }
+  .footer-about .logo { justify-content: center; }
+  .footer-social { justify-content: center; }
+  .footer-links li { min-height: 42px; display: flex; align-items: center; justify-content: center; }
+  .footer-contact li { justify-content: center; text-align: center; }
+  .footer-bottom { line-height: 1.7; padding-bottom: 28px; }
+
+  .chart-placeholder { height: 220px; }
+  .table-wrapper { -webkit-overflow-scrolling: touch; }
 }
