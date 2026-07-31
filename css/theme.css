@@ -12,6 +12,9 @@ html.lenis, html.lenis body { height: auto; }
 .eyebrow { display: inline-flex; align-items: center; gap: 10px; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); color: #f59e0b; padding: 8px 18px; border-radius: 50px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 22px; }
 .eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #f59e0b; box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2); }
 
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); color: #f59e0b; padding: 8px 18px; border-radius: 50px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 22px; }
+.hero-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #f59e0b; box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2); }
+
 /* ===== INFINITE MARQUEE ===== */
 .marquee { overflow: hidden; background: #16162a; padding: 24px 0; position: relative; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); }
 .marquee-track { display: flex; width: max-content; animation: marqueeMove 34s linear infinite; }

@@ -321,3 +321,19 @@ section[id] { scroll-margin-top: 84px; }
   .chart-placeholder { height: 220px; }
   .table-wrapper { -webkit-overflow-scrolling: touch; }
 }
+
+/* ===== Testimonials: stack cards so all are visible below desktop ===== */
+@media (max-width: 1023px) {
+  .hscroll-section { height: auto; padding: 80px 0; overflow: visible; }
+  .hscroll-inner { flex-direction: column; width: 100%; overflow: visible; gap: 20px; padding: 24px 20px 40px; }
+  .hscroll-card, .hscroll-feature { width: 100%; }
+  .hscroll-feature { padding: 34px 24px; }
+}
+
+/* ===== Testimonials: reduced-motion fallback (no GSAP pin on desktop) ===== */
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+  .hscroll-section { height: auto; padding: 80px 0; overflow: visible; }
+  .hscroll-inner { flex-direction: column; width: 100%; overflow: visible; gap: 20px; padding: 24px 20px 40px; }
+  .hscroll-card, .hscroll-feature { width: 100%; }
+  .hscroll-feature { padding: 34px 24px; }
+}

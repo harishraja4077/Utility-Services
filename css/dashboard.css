@@ -14,8 +14,9 @@ ul { list-style: none; }
 
 .sidebar-user { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 12px; }
 .sidebar-user-avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, #f59e0b, #f97316); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; font-size: 1rem; min-width: 42px; }
-.sidebar-user-info h4 { font-size: 0.95rem; color: #fff; font-weight: 600; }
-.sidebar-user-info span { font-size: 0.78rem; color: rgba(255,255,255,0.5); display: block; margin-top: 2px; }
+.sidebar-user-info { min-width: 0; flex: 1; }
+.sidebar-user-info h4 { font-size: 0.95rem; color: #fff; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sidebar-user-info span { font-size: 0.78rem; color: rgba(255,255,255,0.5); display: block; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .sidebar-nav { flex: 1; padding: 15px 12px; overflow-y: auto; }
 .sidebar-nav-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.3); padding: 15px 12px 8px; font-weight: 600; }
