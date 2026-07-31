@@ -1,0 +1,196 @@
+/* =====================================================================
+   STACKLY RESPONSIVE OVERRIDES
+   Loaded after style.css / theme.css / dashboard.css on every page.
+   Breakpoints: large desktop 1440+ | desktop 1200-1439 | laptop 992-1199
+               | tablet 768-991 | mobile large 576-767 | mobile small 320-575
+   Purpose: mobile usability + zero horizontal overflow, without redesign.
+   ===================================================================== */
+
+/* ---- Helpers ---- */
+body.no-scroll { overflow: hidden; }
+
+/* ===== DESKTOP 1200-1439 ===== */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .hero-text h1 { font-size: 3.4rem; }
+}
+
+/* ===== LAPTOP 992-1199 ===== */
+@media (max-width: 1199px) {
+  .container { padding: 0 24px; }
+}
+
+/* ===== TABLET 768-991 ===== */
+@media (max-width: 991px) {
+  .section-title { margin-bottom: 44px; }
+  .section-title h2 { font-size: 2.1rem; }
+  .hero-text h1 { font-size: 2.9rem; }
+  .hero-text p { font-size: 1.05rem; }
+  .page-header { min-height: 42vh; }
+  .page-header-content { padding-top: 90px; padding-bottom: 30px; }
+  .page-header-content h1 { font-size: 2.6rem; }
+  .footer-grid { gap: 36px; }
+  .footer { padding: 60px 0 0; }
+  .services, .why-choose, .process, .testimonials, .pricing, .blog-section,
+  .cta-section, .about-intro, .mission-vision, .team-section, .timeline,
+  .services-detailed, .contact-info-section, .map-section, .blog-page {
+    padding: 80px 0;
+  }
+}
+
+/* Image-bearing grid children must be allowed to shrink below the
+   intrinsic min-content of their media (prevents latent overflow). */
+.why-grid > *, .about-intro-grid > *, .mv-grid > *, .featured-post > *,
+.service-detailed-item > *, .contact-grid > *, .blog-page-grid > *,
+.offices-grid > *, .split-grid > * { min-width: 0; }
+
+/* Badge sits flush to the image's right edge; keep it inside the viewport
+   once the grid narrows (was overflowing at 1200 and below). */
+@media (max-width: 1200px) {
+  .why-experience { right: 20px; bottom: -20px; }
+}
+
+/* ===== MOBILE LARGE 576-767 ===== */
+@media (max-width: 767px) {
+  input, select, textarea { font-size: 16px; }
+
+  .section-title h2 { font-size: 1.8rem; }
+  .section-title p { font-size: 1rem; }
+
+  .hero { min-height: 100svh; }
+  .hero-text h1 { font-size: 2.2rem; }
+  .hero-text p { font-size: 1rem; line-height: 1.7; }
+  .hero-content { padding-top: 100px; gap: 40px; }
+  .hero-buttons .btn-primary, .hero-buttons .btn-secondary { width: 100%; justify-content: center; }
+  .hero-stat h3 { font-size: 1.6rem; }
+  .logo { font-size: 1.3rem; }
+  .logo img { height: 60px; }
+
+  .why-experience { right: 20px; bottom: -20px; padding: 22px; }
+  .why-feature { padding: 16px; }
+  .service-detailed-item { padding: 30px 22px; gap: 28px; }
+  .service-detailed-text h3 { font-size: 1.4rem; }
+  .contact-form-wrapper { padding: 26px 20px; }
+  .contact-info-card { padding: 22px; gap: 16px; }
+  .featured-post-content { padding: 26px 20px; }
+  .featured-post-image { height: 260px; }
+  .sidebar-widget { padding: 24px 20px; }
+  .blog-content { padding: 22px 20px; }
+  .cta-content h2 { font-size: 1.9rem; }
+  .cta-content p { font-size: 1.05rem; }
+  .newsletter-content h2 { font-size: 1.8rem; }
+  .newsletter-form button { width: 100%; justify-content: center; }
+  .map-wrapper { height: 300px; }
+  .counter-number { font-size: 2.4rem; }
+  .timeline-content { padding: 22px; }
+  .timeline-year { font-size: 1.2rem; min-width: 84px; }
+  .about-intro-text h2 { font-size: 1.9rem; }
+  .mv-card { padding: 32px 24px; }
+  .team-image { height: 220px; }
+
+  .split-section { padding: 80px 0; }
+  .split-visual img { height: 280px; }
+  .split-badge { right: 20px; padding: 14px 18px; }
+  .split-badge h3 { font-size: 1.5rem; }
+  .reveal-item { padding: 22px 20px; gap: 14px; }
+  .bento-card { padding: 26px 22px; }
+  .bento-feat h3 { font-size: 1.5rem; }
+  .bento-emerg h3 { font-size: 1.3rem; }
+  .bento-emerg .bento-actions a { flex: 1; justify-content: center; }
+  .stat-card { padding: 30px 18px; }
+  .stat-number { font-size: 2.4rem; }
+  .hscroll-card, .hscroll-feature { width: 86vw; }
+  .flip-face { padding: 34px 22px; }
+  .flip-front h3 { font-size: 1.3rem; }
+  .reveal-card { height: 460px; }
+  .t-card { padding: 22px 20px; }
+  .t-step, .t-step:nth-child(even) { padding-left: 64px; }
+
+  .go-top { width: 48px; height: 48px; right: 16px; bottom: 16px; font-size: 1.1rem; }
+
+  /* Dashboard: stacked headers, wrapping lists, 1-col stats */
+  .dashboard-layout .stats-grid { grid-template-columns: 1fr; }
+  .page-content { padding: 20px 16px; }
+  .card-body { padding: 18px; }
+  .card-header { padding: 16px 18px; }
+  .dashboard-layout .page-header { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .dashboard-layout .page-header > div:last-child { width: 100%; flex-wrap: wrap; }
+  .dashboard-layout .page-header select { width: 100%; }
+  .topbar { padding: 0 16px; height: 62px; }
+  .topbar-left h2 { font-size: 1.1rem; }
+  .topbar-left p { display: none; }
+  .topbar-notif { width: 44px; height: 44px; }
+  .service-item, .invoice-item, .appointment-item { flex-wrap: wrap; gap: 12px; }
+  .service-item-icon, .invoice-icon { width: 42px; height: 42px; min-width: 42px; }
+  .appointment-date { min-width: 44px; }
+  .invoice-amount { margin-right: 0; }
+  .calendar-header { flex-wrap: wrap; gap: 12px; }
+  .calendar-nav button { width: 44px; height: 44px; }
+  .report-card { padding: 20px 16px; }
+  .metric-row { flex-wrap: wrap; gap: 6px; }
+}
+
+/* ===== MOBILE SMALL 320-575 ===== */
+@media (max-width: 575px) {
+  .container { padding: 0 16px; }
+  .section-title h2 { font-size: 1.6rem; }
+  .hero-text h1 { font-size: 1.9rem; }
+  .hero-stats { gap: 18px; }
+  .hero-stat h3 { font-size: 1.4rem; }
+  .page-header-content h1 { font-size: 2rem; }
+  .breadcrumb { flex-wrap: wrap; gap: 6px; font-size: 0.85rem; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-social a { width: 44px; height: 44px; }
+
+  .services-grid, .team-grid, .pricing-grid, .testimonial-grid, .blog-grid,
+  .offices-grid, .process-steps, .counter-grid, .mv-grid, .bento-grid {
+    gap: 18px;
+  }
+  .why-features { gap: 18px; }
+  .service-detailed-text ul li { align-items: flex-start; }
+  .newsletter-form input { padding: 15px 20px; }
+  .newsletter-form button { padding: 15px 20px; }
+
+  .timeline-item { flex-direction: column; gap: 8px; padding-left: 22px; }
+  .timeline-year { min-width: 0; }
+  .timeline-item::after { width: 16px; height: 16px; left: -7px; }
+  .timeline-item::before { left: 0; }
+
+  .featured-post-image { height: 220px; }
+  .blog-category-btn { padding: 9px 18px; }
+  .pagination a { width: 44px; height: 44px; }
+  .pagination { flex-wrap: wrap; }
+  .recent-post-image { width: 60px; height: 60px; min-width: 60px; }
+
+  .split-grid { gap: 40px; }
+  .split-title p { font-size: 1rem; }
+  .reveal-item h4 { font-size: 1rem; }
+  .rev-icon { width: 48px; height: 48px; min-width: 48px; font-size: 1.2rem; }
+  .bento-grid { grid-auto-rows: 200px; }
+  .bento-feat { min-height: 300px; }
+  .hscroll-inner { gap: 16px; }
+  .hscroll-card { padding: 26px 20px; }
+  .hscroll-feature { padding: 30px 22px; }
+  .hscroll-feature h3 { font-size: 1.4rem; }
+  .flip-face { padding: 28px 18px; }
+  .flip-hint { font-size: 0.85rem; }
+  .reveal-body { padding: 22px 18px; }
+  .reveal-body h3 { font-size: 1.1rem; }
+
+  .contact-info-icon { width: 52px; height: 52px; min-width: 52px; font-size: 1.3rem; }
+  .contact-details { grid-template-columns: minmax(0, 1fr); }
+  .contact-info-card { min-width: 0; }
+  .contact-info-card .footer-social { flex-wrap: wrap; }
+  .hours-card { padding: 22px 18px; }
+  .stats-section .stat-icon { font-size: 1.6rem; }
+
+  .search-box input { min-width: 0; }
+
+  .office-card { padding: 26px 20px; }
+  .office-card > div:last-child { flex-wrap: wrap; }
+
+  .topbar-right { gap: 12px; }
+  .topbar-mail { padding: 8px 12px; font-size: 0.8rem; }
+  .dashboard-table th, .dashboard-table td { padding: 12px; }
+  .appointment-date .day { font-size: 1.1rem; }
+  .service-item-info h4 { font-size: 0.88rem; }
+}

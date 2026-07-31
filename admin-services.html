@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Services - Stackly</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/dashboard.css?v=2">
+  <link rel="stylesheet" href="css/responsive.css?v=2">
+</head>
+<body>
+<div class="dashboard-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <a href="index.html"><img src="images/logo.webp" alt="Stackly" class="logo"></a>
+    </div>
+    <div class="sidebar-user">
+      <div class="sidebar-user-avatar" id="sidebarAvatar">AP</div>
+      <div class="sidebar-user-info">
+        <h4 id="sidebarName">Admin Panel</h4>
+        <span>Super Admin</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-nav-label">Main Menu</div>
+      <a href="admin-dashboard.html" class="sidebar-nav-item"><i class="fas fa-th-large"></i> Dashboard</a>
+      <a href="admin-services.html" class="sidebar-nav-item active"><i class="fas fa-tools"></i> Manage Services</a>
+      <a href="admin-clients.html" class="sidebar-nav-item"><i class="fas fa-users"></i> Clients</a>
+      <a href="admin-invoices.html" class="sidebar-nav-item"><i class="fas fa-file-invoice"></i> Invoices <span class="badge">12</span></a>
+      <a href="admin-reports.html" class="sidebar-nav-item"><i class="fas fa-chart-pie"></i> Reports</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="signin.html" class="sidebar-nav-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-content">
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <i class="fas fa-bars" style="font-size:1.2rem;color:#888;cursor:pointer;display:none" id="menuToggle"></i>
+        <div>
+          <h2>Manage Services</h2>
+          <p>Configure and monitor all utility services</p>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-mail"><i class="fas fa-envelope"></i> <span id="displayEmail">admin@email.com</span></div>
+        <a href="404.html" class="topbar-notif"><i class="fas fa-bell"></i> <span class="notif-dot"></span></a>
+      </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+      <div class="page-header">
+        <div>
+          <h2>Service Catalog</h2>
+          <p>Manage all services offered on the platform</p>
+        </div>
+        <a href="404.html" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#f59e0b,#f97316);color:#fff;padding:10px 22px;border-radius:12px;font-weight:600;font-size:0.9rem;text-decoration:none"><i class="fas fa-plus"></i> Add Service</a>
+      </div>
+
+      <div class="stats-grid" style="margin-bottom:30px">
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon blue"><i class="fas fa-concierge-bell"></i></div>
+          </div>
+          <div class="stat-card-value">6</div>
+          <div class="stat-card-label">Active Services</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon green"><i class="fas fa-users"></i></div>
+          </div>
+          <div class="stat-card-value">1,423</div>
+          <div class="stat-card-label">Total Subscribers</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon amber"><i class="fas fa-star"></i></div>
+          </div>
+          <div class="stat-card-value">4.8</div>
+          <div class="stat-card-label">Avg Rating</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon red"><i class="fas fa-exclamation-circle"></i></div>
+          </div>
+          <div class="stat-card-value">2</div>
+          <div class="stat-card-label">Pending Requests</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3><i class="fas fa-list" style="color:#f59e0b;margin-right:8px"></i> All Services</h3>
+          <div style="display:flex;gap:8px">
+            <select style="padding:6px 12px;border:1px solid #e0e0e0;border-radius:8px;font-size:0.85rem;color:#444;background:#fff;font-family:inherit">
+              <option>All Categories</option>
+              <option>Electrical</option>
+              <option>Plumbing</option>
+              <option>Gas</option>
+              <option>Solar</option>
+            </select>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-wrapper">
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th>Service</th>
+                  <th>Category</th>
+                  <th>Subscribers</th>
+                  <th>Plans</th>
+                  <th>Price Range</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Electrical Maintenance</strong></td>
+                  <td>Electrical</td>
+                  <td>487</td>
+                  <td>Basic, Standard, Premium</td>
+                  <td>$49 - $149</td>
+                  <td><span class="status-badge active">Active</span></td>
+                  <td><a href="404.html" style="color:#f59e0b;font-weight:600;font-size:0.85rem">Edit</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Water Supply</strong></td>
+                  <td>Plumbing</td>
+                  <td>356</td>
+                  <td>Standard, Family</td>
+                  <td>$42 - $78</td>
+                  <td><span class="status-badge active">Active</span></td>
+                  <td><a href="404.html" style="color:#f59e0b;font-weight:600;font-size:0.85rem">Edit</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Gas Line Safety</strong></td>
+                  <td>Gas</td>
+                  <td>289</td>
+                  <td>Basic, Premium</td>
+                  <td>$58 - $120</td>
+                  <td><span class="status-badge active">Active</span></td>
+                  <td><a href="404.html" style="color:#f59e0b;font-weight:600;font-size:0.85rem">Edit</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Solar Energy Monitoring</strong></td>
+                  <td>Solar</td>
+                  <td>198</td>
+                  <td>Pro, Enterprise</td>
+                  <td>$129 - $299</td>
+                  <td><span class="status-badge active">Active</span></td>
+                  <td><a href="404.html" style="color:#f59e0b;font-weight:600;font-size:0.85rem">Edit</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Smart Home Setup</strong></td>
+                  <td>Electrical</td>
+                  <td>72</td>
+                  <td>Starter, Advanced</td>
+                  <td>$199 - $499</td>
+                  <td><span class="status-badge active">Active</span></td>
+                  <td><a href="404.html" style="color:#f59e0b;font-weight:600;font-size:0.85rem">Edit</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Emergency Repair</strong></td>
+                  <td>General</td>
+                  <td>21</td>
+                  <td>One-time</td>
+                  <td>$99 - $399</td>
+                  <td><span class="status-badge pending">Draft</span></td>
+                  <td><a href="404.html" style="color:#f59e0b;font-weight:600;font-size:0.85rem">Edit</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const email = localStorage.getItem('userEmail');
+  if (email) {
+    document.getElementById('displayEmail').textContent = email;
+    document.getElementById('sidebarName').textContent = email;
+    document.getElementById('sidebarAvatar').textContent = email.charAt(0).toUpperCase();
+  }
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+  let sidebarBackdrop = document.querySelector('.sidebar-backdrop');
+  if (!sidebarBackdrop) {
+    sidebarBackdrop = document.createElement('div');
+    sidebarBackdrop.className = 'sidebar-backdrop';
+    document.body.appendChild(sidebarBackdrop);
+  }
+  const setSidebar = (open) => {
+    sidebar.classList.toggle('open', open);
+    sidebarBackdrop.classList.toggle('show', open);
+    if (menuToggle) menuToggle.setAttribute('aria-expanded', String(open));
+  };
+  if (menuToggle) {
+    menuToggle.setAttribute('aria-label', 'Toggle sidebar');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.addEventListener('click', () => setSidebar(!sidebar.classList.contains('open')));
+  }
+  sidebarBackdrop.addEventListener('click', () => setSidebar(false));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setSidebar(false);
+  });
+  document.querySelectorAll('.sidebar-nav-item').forEach(item => {
+    item.addEventListener('click', function() {
+      document.querySelectorAll('.sidebar-nav-item').forEach(i => i.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+});
+</script>
+
+</body>
+</html>

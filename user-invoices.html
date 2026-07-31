@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoices - Stackly</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/dashboard.css?v=2">
+  <link rel="stylesheet" href="css/responsive.css?v=2">
+</head>
+<body>
+<div class="dashboard-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <a href="index.html"><img src="images/logo.webp" alt="Stackly" class="logo"></a>
+    </div>
+    <div class="sidebar-user">
+      <div class="sidebar-user-avatar" id="sidebarAvatar">RK</div>
+      <div class="sidebar-user-info">
+        <h4 id="sidebarName">Rahul Kumar</h4>
+        <span>Gold Member</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-nav-label">Main Menu</div>
+      <a href="user-dashboard.html" class="sidebar-nav-item"><i class="fas fa-th-large"></i> Dashboard</a>
+      <a href="user-services.html" class="sidebar-nav-item"><i class="fas fa-concierge-bell"></i> My Services</a>
+      <a href="user-invoices.html" class="sidebar-nav-item active"><i class="fas fa-file-invoice"></i> Invoices <span class="badge">3</span></a>
+      <a href="user-appointments.html" class="sidebar-nav-item"><i class="fas fa-calendar-check"></i> Appointments</a>
+      <a href="user-tickets.html" class="sidebar-nav-item"><i class="fas fa-headset"></i> Support Tickets</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="signin.html" class="sidebar-nav-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-content">
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <i class="fas fa-bars" style="font-size:1.2rem;color:#888;cursor:pointer;display:none" id="menuToggle"></i>
+        <div>
+          <h2>Invoices</h2>
+          <p>Track and manage your invoices</p>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-mail"><i class="fas fa-envelope"></i> <span id="displayEmail">user@email.com</span></div>
+        <a href="404.html" class="topbar-notif"><i class="fas fa-bell"></i> <span class="notif-dot"></span></a>
+      </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+      <div class="page-header">
+        <div>
+          <h2>Invoice History</h2>
+          <p>All your invoices and payment status</p>
+        </div>
+        <div style="display:flex;gap:12px">
+          <a href="404.html" style="display:inline-flex;align-items:center;gap:8px;background:#f8f9fa;color:#444;padding:10px 22px;border-radius:12px;font-weight:600;font-size:0.9rem;text-decoration:none"><i class="fas fa-filter"></i> Filter</a>
+        </div>
+      </div>
+
+      <div class="stats-grid" style="margin-bottom:30px">
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon amber"><i class="fas fa-dollar-sign"></i></div>
+          </div>
+          <div class="stat-card-value">$318.50</div>
+          <div class="stat-card-label">Total Outstanding</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon green"><i class="fas fa-check-circle"></i></div>
+          </div>
+          <div class="stat-card-value">$229.00</div>
+          <div class="stat-card-label">Paid This Month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon blue"><i class="fas fa-file-invoice"></i></div>
+          </div>
+          <div class="stat-card-value">2</div>
+          <div class="stat-card-label">Pending Invoices</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon red"><i class="fas fa-exclamation-triangle"></i></div>
+          </div>
+          <div class="stat-card-value">0</div>
+          <div class="stat-card-label">Overdue</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3><i class="fas fa-list" style="color:#f59e0b;margin-right:8px"></i> All Invoices</h3>
+          <div style="display:flex;gap:8px">
+            <select style="padding:6px 12px;border:1px solid #e0e0e0;border-radius:8px;font-size:0.85rem;color:#444;background:#fff;font-family:inherit">
+              <option>All Status</option>
+              <option>Paid</option>
+              <option>Pending</option>
+              <option>Overdue</option>
+            </select>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-wrapper">
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th>Invoice</th>
+                  <th>Service</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                  <th>Due Date</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>#INV-2024-1289</strong></td>
+                  <td>Electrical Maintenance</td>
+                  <td>$89.50</td>
+                  <td>Jun 25, 2026</td>
+                  <td>Jul 5, 2026</td>
+                  <td><span class="status-badge pending">Pending</span></td>
+                  <td><a href="404.html" style="color:#f59e0b;font-weight:600;font-size:0.85rem">Pay Now</a></td>
+                </tr>
+                <tr>
+                  <td><strong>#INV-2024-1276</strong></td>
+                  <td>Water Supply - Monthly</td>
+                  <td>$42.00</td>
+                  <td>Jun 20, 2026</td>
+                  <td>Jun 30, 2026</td>
+                  <td><span class="status-badge active">Paid</span></td>
+                  <td><a href="404.html" style="color:#888;font-size:0.85rem">Download</a></td>
+                </tr>
+                <tr>
+                  <td><strong>#INV-2024-1255</strong></td>
+                  <td>Gas Line Safety</td>
+                  <td>$58.00</td>
+                  <td>Jun 15, 2026</td>
+                  <td>Jun 25, 2026</td>
+                  <td><span class="status-badge active">Paid</span></td>
+                  <td><a href="404.html" style="color:#888;font-size:0.85rem">Download</a></td>
+                </tr>
+                <tr>
+                  <td><strong>#INV-2024-1233</strong></td>
+                  <td>Solar Energy Pro Plan</td>
+                  <td>$129.00</td>
+                  <td>Jun 10, 2026</td>
+                  <td>Jun 20, 2026</td>
+                  <td><span class="status-badge completed">Refunded</span></td>
+                  <td><a href="404.html" style="color:#888;font-size:0.85rem">View</a></td>
+                </tr>
+                <tr>
+                  <td><strong>#INV-2024-1220</strong></td>
+                  <td>Electrical Maintenance</td>
+                  <td>$89.50</td>
+                  <td>Jun 5, 2026</td>
+                  <td>Jun 15, 2026</td>
+                  <td><span class="status-badge active">Paid</span></td>
+                  <td><a href="404.html" style="color:#888;font-size:0.85rem">Download</a></td>
+                </tr>
+                <tr>
+                  <td><strong>#INV-2024-1211</strong></td>
+                  <td>Water Supply - Monthly</td>
+                  <td>$42.00</td>
+                  <td>May 20, 2026</td>
+                  <td>May 30, 2026</td>
+                  <td><span class="status-badge active">Paid</span></td>
+                  <td><a href="404.html" style="color:#888;font-size:0.85rem">Download</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const email = localStorage.getItem('userEmail');
+  if (email) {
+    document.getElementById('displayEmail').textContent = email;
+    document.getElementById('sidebarName').textContent = email;
+    document.getElementById('sidebarAvatar').textContent = email.charAt(0).toUpperCase();
+  }
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+  let sidebarBackdrop = document.querySelector('.sidebar-backdrop');
+  if (!sidebarBackdrop) {
+    sidebarBackdrop = document.createElement('div');
+    sidebarBackdrop.className = 'sidebar-backdrop';
+    document.body.appendChild(sidebarBackdrop);
+  }
+  const setSidebar = (open) => {
+    sidebar.classList.toggle('open', open);
+    sidebarBackdrop.classList.toggle('show', open);
+    if (menuToggle) menuToggle.setAttribute('aria-expanded', String(open));
+  };
+  if (menuToggle) {
+    menuToggle.setAttribute('aria-label', 'Toggle sidebar');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.addEventListener('click', () => setSidebar(!sidebar.classList.contains('open')));
+  }
+  sidebarBackdrop.addEventListener('click', () => setSidebar(false));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setSidebar(false);
+  });
+  document.querySelectorAll('.sidebar-nav-item').forEach(item => {
+    item.addEventListener('click', function() {
+      document.querySelectorAll('.sidebar-nav-item').forEach(i => i.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+});
+</script>
+
+</body>
+</html>

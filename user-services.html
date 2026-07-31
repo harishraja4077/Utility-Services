@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Services - Stackly</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/dashboard.css?v=2">
+  <link rel="stylesheet" href="css/responsive.css?v=2">
+</head>
+<body>
+<div class="dashboard-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <a href="index.html"><img src="images/logo.webp" alt="Stackly" class="logo"></a>
+    </div>
+    <div class="sidebar-user">
+      <div class="sidebar-user-avatar" id="sidebarAvatar">RK</div>
+      <div class="sidebar-user-info">
+        <h4 id="sidebarName">Rahul Kumar</h4>
+        <span>Gold Member</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-nav-label">Main Menu</div>
+      <a href="user-dashboard.html" class="sidebar-nav-item"><i class="fas fa-th-large"></i> Dashboard</a>
+      <a href="user-services.html" class="sidebar-nav-item active"><i class="fas fa-concierge-bell"></i> My Services</a>
+      <a href="user-invoices.html" class="sidebar-nav-item"><i class="fas fa-file-invoice"></i> Invoices <span class="badge">3</span></a>
+      <a href="user-appointments.html" class="sidebar-nav-item"><i class="fas fa-calendar-check"></i> Appointments</a>
+      <a href="user-tickets.html" class="sidebar-nav-item"><i class="fas fa-headset"></i> Support Tickets</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="signin.html" class="sidebar-nav-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-content">
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <i class="fas fa-bars" style="font-size:1.2rem;color:#888;cursor:pointer;display:none" id="menuToggle"></i>
+        <div>
+          <h2>My Services</h2>
+          <p>Manage your active utility services</p>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-mail"><i class="fas fa-envelope"></i> <span id="displayEmail">user@email.com</span></div>
+        <a href="404.html" class="topbar-notif"><i class="fas fa-bell"></i> <span class="notif-dot"></span></a>
+      </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+      <div class="page-header">
+        <div>
+          <h2>All Services</h2>
+          <p>View and manage your subscribed services</p>
+        </div>
+        <a href="404.html" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#f59e0b,#f97316);color:#fff;padding:10px 22px;border-radius:12px;font-weight:600;font-size:0.9rem;border:none;cursor:pointer;text-decoration:none"><i class="fas fa-plus"></i> Add Service</a>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-bottom:30px">
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fas fa-bolt" style="color:#f59e0b;margin-right:8px"></i> Electrical Maintenance</h3>
+            <span class="status-badge active">Active</span>
+          </div>
+          <div class="card-body">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+              <div><span style="font-size:0.78rem;color:#888">Plan</span><p style="font-weight:600;color:#1a1a2e">Premium</p></div>
+              <div><span style="font-size:0.78rem;color:#888">Next Visit</span><p style="font-weight:600;color:#1a1a2e">Jul 12, 2026</p></div>
+              <div><span style="font-size:0.78rem;color:#888">Monthly Cost</span><p style="font-weight:600;color:#1a1a2e">$89.50</p></div>
+              <div><span style="font-size:0.78rem;color:#888">Provider</span><p style="font-weight:600;color:#1a1a2e">Suresh (Tech)</p></div>
+            </div>
+            <div style="margin-top:16px;display:flex;gap:10px">
+              <a href="404.html" style="font-size:0.85rem;color:#f59e0b;font-weight:600"><i class="fas fa-calendar-alt"></i> Schedule Visit</a>
+              <a href="404.html" style="font-size:0.85rem;color:#ef4444;font-weight:600;margin-left:auto"><i class="fas fa-times"></i> Cancel</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fas fa-tint" style="color:#3b82f6;margin-right:8px"></i> Water Supply</h3>
+            <span class="status-badge active">Active</span>
+          </div>
+          <div class="card-body">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+              <div><span style="font-size:0.78rem;color:#888">Plan</span><p style="font-weight:600;color:#1a1a2e">Standard</p></div>
+              <div><span style="font-size:0.78rem;color:#888">Monthly Charge</span><p style="font-weight:600;color:#1a1a2e">$42.00</p></div>
+              <div><span style="font-size:0.78rem;color:#888">Usage</span><p style="font-weight:600;color:#1a1a2e">12,000 L</p></div>
+              <div><span style="font-size:0.78rem;color:#888">Status</span><p style="font-weight:600;color:#22c55e">On Track</p></div>
+            </div>
+            <div style="margin-top:16px;display:flex;gap:10px">
+              <a href="404.html" style="font-size:0.85rem;color:#f59e0b;font-weight:600"><i class="fas fa-file-invoice"></i> View Bill</a>
+              <a href="404.html" style="font-size:0.85rem;color:#ef4444;font-weight:600;margin-left:auto"><i class="fas fa-times"></i> Cancel</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fas fa-fire" style="color:#ef4444;margin-right:8px"></i> Gas Line Safety</h3>
+            <span class="status-badge active">Active</span>
+          </div>
+          <div class="card-body">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+              <div><span style="font-size:0.78rem;color:#888">Plan</span><p style="font-weight:600;color:#1a1a2e">Basic</p></div>
+              <div><span style="font-size:0.78rem;color:#888">Next Inspection</span><p style="font-weight:600;color:#1a1a2e">Aug 3, 2026</p></div>
+              <div><span style="font-size:0.78rem;color:#888">Monthly Cost</span><p style="font-weight:600;color:#1a1a2e">$58.00</p></div>
+              <div><span style="font-size:0.78rem;color:#888">Technician</span><p style="font-weight:600;color:#1a1a2e">Amit (Tech)</p></div>
+            </div>
+            <div style="margin-top:16px;display:flex;gap:10px">
+              <a href="404.html" style="font-size:0.85rem;color:#f59e0b;font-weight:600"><i class="fas fa-calendar-alt"></i> Reschedule</a>
+              <a href="404.html" style="font-size:0.85rem;color:#ef4444;font-weight:600;margin-left:auto"><i class="fas fa-times"></i> Cancel</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fas fa-sun" style="color:#22c55e;margin-right:8px"></i> Solar Energy Monitoring</h3>
+            <span class="status-badge active">Active</span>
+          </div>
+          <div class="card-body">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+              <div><span style="font-size:0.78rem;color:#888">Plan</span><p style="font-weight:600;color:#1a1a2e">Pro</p></div>
+              <div><span style="font-size:0.78rem;color:#888">Today's Output</span><p style="font-weight:600;color:#1a1a2e">4.2 kW</p></div>
+              <div><span style="font-size:0.78rem;color:#888">Monthly Savings</span><p style="font-weight:600;color:#1a1a2e">$34.00</p></div>
+              <div><span style="font-size:0.78rem;color:#888">CO2 Saved</span><p style="font-weight:600;color:#1a1a2e">128 kg</p></div>
+            </div>
+            <div style="margin-top:16px;display:flex;gap:10px">
+              <a href="404.html" style="font-size:0.85rem;color:#f59e0b;font-weight:600"><i class="fas fa-chart-line"></i> View Analytics</a>
+              <a href="404.html" style="font-size:0.85rem;color:#ef4444;font-weight:600;margin-left:auto"><i class="fas fa-times"></i> Cancel</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const email = localStorage.getItem('userEmail');
+  if (email) {
+    document.getElementById('displayEmail').textContent = email;
+    document.getElementById('sidebarName').textContent = email;
+    document.getElementById('sidebarAvatar').textContent = email.charAt(0).toUpperCase();
+  }
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+  let sidebarBackdrop = document.querySelector('.sidebar-backdrop');
+  if (!sidebarBackdrop) {
+    sidebarBackdrop = document.createElement('div');
+    sidebarBackdrop.className = 'sidebar-backdrop';
+    document.body.appendChild(sidebarBackdrop);
+  }
+  const setSidebar = (open) => {
+    sidebar.classList.toggle('open', open);
+    sidebarBackdrop.classList.toggle('show', open);
+    if (menuToggle) menuToggle.setAttribute('aria-expanded', String(open));
+  };
+  if (menuToggle) {
+    menuToggle.setAttribute('aria-label', 'Toggle sidebar');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.addEventListener('click', () => setSidebar(!sidebar.classList.contains('open')));
+  }
+  sidebarBackdrop.addEventListener('click', () => setSidebar(false));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setSidebar(false);
+  });
+  document.querySelectorAll('.sidebar-nav-item').forEach(item => {
+    item.addEventListener('click', function() {
+      document.querySelectorAll('.sidebar-nav-item').forEach(i => i.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+});
+</script>
+
+</body>
+</html>

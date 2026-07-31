@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports - Stackly Admin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/dashboard.css?v=2">
+  <link rel="stylesheet" href="css/responsive.css?v=2">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <style>
+    .report-card { background:#fff;border-radius:16px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,0.04) }
+    .report-card h3 { font-size:1rem;color:#1a1a2e;font-weight:700;margin-bottom:16px }
+    .metric-row { display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.04) }
+    .metric-row:last-child { border-bottom:none }
+    .metric-label { color:#888;font-size:0.88rem }
+    .metric-value { font-weight:700;color:#1a1a2e;font-size:0.95rem }
+    .metric-change.up { color:#22c55e }
+    .metric-change.down { color:#ef4444 }
+  </style>
+</head>
+<body>
+<div class="dashboard-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <a href="index.html"><img src="images/logo.webp" alt="Stackly" class="logo"></a>
+    </div>
+    <div class="sidebar-user">
+      <div class="sidebar-user-avatar" id="sidebarAvatar">AP</div>
+      <div class="sidebar-user-info">
+        <h4 id="sidebarName">Admin Panel</h4>
+        <span>Super Admin</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-nav-label">Main Menu</div>
+      <a href="admin-dashboard.html" class="sidebar-nav-item"><i class="fas fa-th-large"></i> Dashboard</a>
+      <a href="admin-services.html" class="sidebar-nav-item"><i class="fas fa-tools"></i> Manage Services</a>
+      <a href="admin-clients.html" class="sidebar-nav-item"><i class="fas fa-users"></i> Clients</a>
+      <a href="admin-invoices.html" class="sidebar-nav-item"><i class="fas fa-file-invoice"></i> Invoices <span class="badge">12</span></a>
+      <a href="admin-reports.html" class="sidebar-nav-item active"><i class="fas fa-chart-pie"></i> Reports</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="signin.html" class="sidebar-nav-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-content">
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <i class="fas fa-bars" style="font-size:1.2rem;color:#888;cursor:pointer;display:none" id="menuToggle"></i>
+        <div>
+          <h2>Reports</h2>
+          <p>Analytics and business intelligence</p>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-mail"><i class="fas fa-envelope"></i> <span id="displayEmail">admin@email.com</span></div>
+        <a href="404.html" class="topbar-notif"><i class="fas fa-bell"></i> <span class="notif-dot"></span></a>
+      </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+      <div class="page-header">
+        <div>
+          <h2>Reports & Analytics</h2>
+          <p>Track performance and growth metrics</p>
+        </div>
+        <div style="display:flex;gap:12px">
+          <select style="padding:8px 14px;border:1px solid #e0e0e0;border-radius:10px;font-size:0.85rem;color:#444;background:#fff;font-family:inherit">
+            <option>Last 30 Days</option>
+            <option>Last Quarter</option>
+            <option>This Year</option>
+            <option>Custom Range</option>
+          </select>
+          <a href="404.html" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#f59e0b,#f97316);color:#fff;padding:10px 22px;border-radius:12px;font-weight:600;font-size:0.9rem;text-decoration:none"><i class="fas fa-file-export"></i> Export Report</a>
+        </div>
+      </div>
+
+      <div class="charts-grid" style="margin-bottom:30px">
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fas fa-chart-line" style="color:#f59e0b;margin-right:8px"></i> Revenue Trend</h3>
+          </div>
+          <div class="card-body">
+            <div style="height:260px"><canvas id="revenueChart"></canvas></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fas fa-chart-donut" style="color:#f59e0b;margin-right:8px"></i> Service Distribution</h3>
+          </div>
+          <div class="card-body">
+            <div style="height:260px"><canvas id="serviceDistChart"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="charts-grid" style="margin-bottom:30px">
+        <div class="report-card">
+          <h3><i class="fas fa-users" style="color:#f59e0b;margin-right:8px"></i> Client Metrics</h3>
+          <div class="metric-row">
+            <span class="metric-label">Total Clients</span>
+            <span class="metric-value">2,847 <span class="metric-change up">↑ 12.5%</span></span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">New Clients (30d)</span>
+            <span class="metric-value">186 <span class="metric-change up">↑ 8.2%</span></span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Churn Rate</span>
+            <span class="metric-value">2.3% <span class="metric-change down">↓ 0.5%</span></span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Avg Client Lifetime</span>
+            <span class="metric-value">14.2 months</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Active Subscriptions</span>
+            <span class="metric-value">2,431</span>
+          </div>
+        </div>
+        <div class="report-card">
+          <h3><i class="fas fa-dollar-sign" style="color:#f59e0b;margin-right:8px"></i> Financial Metrics</h3>
+          <div class="metric-row">
+            <span class="metric-label">Monthly Revenue</span>
+            <span class="metric-value">$48,290 <span class="metric-change up">↑ 8.3%</span></span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Avg Revenue/Client</span>
+            <span class="metric-value">$16.96</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Pending Payments</span>
+            <span class="metric-value">$480.50</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Monthly Expenses</span>
+            <span class="metric-value">$12,400 <span class="metric-change up">↑ 3.1%</span></span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Net Profit</span>
+            <span class="metric-value">$35,890 <span class="metric-change up">↑ 10.2%</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="charts-grid" style="margin-bottom:30px">
+        <div class="report-card">
+          <h3><i class="fas fa-concierge-bell" style="color:#f59e0b;margin-right:8px"></i> Service Performance</h3>
+          <div class="metric-row">
+            <span class="metric-label">Active Services</span>
+            <span class="metric-value">1,423</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Service Completion Rate</span>
+            <span class="metric-value">94.7% <span class="metric-change up">↑ 2.1%</span></span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Avg Response Time</span>
+            <span class="metric-value">3.2 hours <span class="metric-change down">↓ 0.8h</span></span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Customer Satisfaction</span>
+            <span class="metric-value">4.8 / 5.0</span>
+          </div>
+        </div>
+        <div class="report-card">
+          <h3><i class="fas fa-headset" style="color:#f59e0b;margin-right:8px"></i> Support Metrics</h3>
+          <div class="metric-row">
+            <span class="metric-label">Open Tickets</span>
+            <span class="metric-value">18</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Avg Resolution Time</span>
+            <span class="metric-value">6.4 hours <span class="metric-change down">↓ 1.2h</span></span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Tickets Resolved (30d)</span>
+            <span class="metric-value">147</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">First Response Time</span>
+            <span class="metric-value">1.8 hours</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const email = localStorage.getItem('userEmail');
+  if (email) {
+    document.getElementById('displayEmail').textContent = email;
+    document.getElementById('sidebarName').textContent = email;
+    document.getElementById('sidebarAvatar').textContent = email.charAt(0).toUpperCase();
+  }
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+  let sidebarBackdrop = document.querySelector('.sidebar-backdrop');
+  if (!sidebarBackdrop) {
+    sidebarBackdrop = document.createElement('div');
+    sidebarBackdrop.className = 'sidebar-backdrop';
+    document.body.appendChild(sidebarBackdrop);
+  }
+  const setSidebar = (open) => {
+    sidebar.classList.toggle('open', open);
+    sidebarBackdrop.classList.toggle('show', open);
+    if (menuToggle) menuToggle.setAttribute('aria-expanded', String(open));
+  };
+  if (menuToggle) {
+    menuToggle.setAttribute('aria-label', 'Toggle sidebar');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.addEventListener('click', () => setSidebar(!sidebar.classList.contains('open')));
+  }
+  sidebarBackdrop.addEventListener('click', () => setSidebar(false));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setSidebar(false);
+  });
+  document.querySelectorAll('.sidebar-nav-item').forEach(item => {
+    item.addEventListener('click', function() {
+      document.querySelectorAll('.sidebar-nav-item').forEach(i => i.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  const revCtx = document.getElementById('revenueChart');
+  if (revCtx) {
+    new Chart(revCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Revenue ($)',
+          data: [38500, 41200, 39800, 43500, 46200, 48290],
+          borderColor: '#f59e0b',
+          backgroundColor: 'rgba(245,158,11,0.12)',
+          fill: true,
+          tension: 0.4,
+          pointBackgroundColor: '#f59e0b',
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2,
+          pointRadius: 5,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { font: { size: 11 }, callback: v => '$' + v.toLocaleString() } },
+          x: { grid: { display: false }, ticks: { font: { size: 11 } } }
+        }
+      }
+    });
+  }
+
+  const distCtx = document.getElementById('serviceDistChart');
+  if (distCtx) {
+    new Chart(distCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Electrical', 'Water', 'Gas', 'Solar', 'Other'],
+        datasets: [{
+          data: [34, 25, 20, 14, 7],
+          backgroundColor: ['#f59e0b', '#3b82f6', '#ef4444', '#22c55e', '#a855f7'],
+          borderWidth: 0,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '70%',
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { padding: 16, usePointStyle: true, font: { size: 11 } }
+          }
+        }
+      }
+    });
+  }
+});
+</script>
+
+</body>
+</html>

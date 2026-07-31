@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Stackly</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/responsive.css?v=2">
+</head>
+<body>
+
+<div class="page-loader" id="pageLoader">
+  <div class="loader-spinner"></div>
+</div>
+
+<header class="header" id="header">
+  <div class="container">
+    <nav class="navbar">
+      <a href="index.html" class="logo">
+        <img src="images/logo.webp" alt="Stackly">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+         <li class="nav-auth"><a href="signup.html" class="nav-signup">Sign Up</a></li>
+        <li><a href="signin.html" class="nav-cta">Sign In</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="page-header">
+  <div class="page-header-content animate-on-scroll fade-in-up">
+    <div class="breadcrumb"><a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span>Contact Us</span></div>
+    <h1>Get In Touch</h1>
+    <p>We're here to help! Reach out for inquiries, quotes, or emergency services.</p>
+  </div>
+</section>
+
+<section class="contact-info-section" id="contact-info">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-details">
+        <div class="contact-info-card animate-on-scroll fade-in-left" style="transition-delay:0.1s">
+          <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <h4>Our Location</h4>
+            <p>MMR Complex, Chinna Thirupathi<br>near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</p>
+          </div>
+        </div>
+        <div class="contact-info-card animate-on-scroll fade-in-left" style="transition-delay:0.15s">
+          <div class="contact-info-icon"><i class="fas fa-phone-alt"></i></div>
+          <div>
+            <h4>Phone Number</h4>
+            <p>WhatsApp: +91 70107 92745</p>
+          </div>
+        </div>
+        <div class="contact-info-card animate-on-scroll fade-in-left" style="transition-delay:0.2s">
+          <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <h4>Email Address</h4>
+            <p>General: info@thestackly.com<br>Alt: thestackly@gmail.com</p>
+          </div>
+        </div>
+        <div class="contact-info-card animate-on-scroll fade-in-left" style="transition-delay:0.25s">
+          <div class="contact-info-icon"><i class="fas fa-clock"></i></div>
+          <div>
+            <h4>Working Hours</h4>
+            <p>Mon - Fri: 8:00 AM - 8:00 PM<br>Saturday: 9:00 AM - 5:00 PM<br>Sunday: Emergency Only</p>
+          </div>
+        </div>
+        <div class="contact-info-card animate-on-scroll fade-in-left" style="transition-delay:0.3s">
+          <div class="contact-info-icon"><i class="fas fa-globe"></i></div>
+          <div>
+            <h4>Social Media</h4>
+            <p>Follow us for tips, updates, and special offers.</p>
+            <div class="footer-social" style="margin-top: 10px;">
+              <a href="404.html"><i class="fab fa-facebook-f"></i></a>
+              <a href="404.html"><i class="fab fa-twitter"></i></a>
+              <a href="404.html"><i class="fab fa-instagram"></i></a>
+              <a href="404.html"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrapper animate-on-scroll fade-in-right">
+        <h3>Send Us a Message</h3>
+        <p>Fill out the form below and our team will get back to you within 24 hours.</p>
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="john@example.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" placeholder="+91 70107 92745">
+            </div>
+            <div class="form-group">
+              <label>Service Needed</label>
+              <select>
+                <option>Select a service</option>
+                <option>Electrical</option>
+                <option>Plumbing / Water</option>
+                <option>Gas Services</option>
+                <option>Solar Energy</option>
+                <option>Maintenance Plan</option>
+                <option>Safety Inspection</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell us about your requirements..." required></textarea>
+          </div>
+          <a href="404.html" class="btn-primary" style="width:100%;justify-content:center;text-decoration:none">Send Message <i class="fas fa-paper-plane"></i></a>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="map-section" id="map">
+  <div class="container">
+    <div class="section-title animate-on-scroll fade-in-up">
+      <h2>Find Us Here</h2>
+      <p>Visit our office or reach out to any of our service locations.</p>
+    </div>
+    <div class="map-wrapper animate-on-scroll scale-in">
+      <iframe src="https://maps.google.com/maps?q=MMR+Complex+Chinna+Thirupathi+Salem+Tamil+Nadu+636008&t=m&z=15&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="counter-section" id="hours-counter">
+  <div class="container">
+    <div class="section-title animate-on-scroll fade-in-up" style="color:#fff">
+      <h2 style="color:#fff">Service Coverage</h2>
+      <p style="color:rgba(255,255,255,0.7)">We serve a wide area with rapid response times.</p>
+    </div>
+    <div class="counter-grid">
+      <div class="counter-item animate-on-scroll scale-in">
+        <div class="counter-icon"><i class="fas fa-city"></i></div>
+        <div class="counter-number"><span class="count" data-target="50">0</span>+</div>
+        <div class="counter-label">Cities Covered</div>
+      </div>
+      <div class="counter-item animate-on-scroll scale-in" style="transition-delay:0.15s">
+        <div class="counter-icon"><i class="fas fa-road"></i></div>
+        <div class="counter-number"><span class="count" data-target="200">0</span>mi</div>
+        <div class="counter-label">Service Radius</div>
+      </div>
+      <div class="counter-item animate-on-scroll scale-in" style="transition-delay:0.3s">
+        <div class="counter-icon"><i class="fas fa-truck"></i></div>
+        <div class="counter-number"><span class="count" data-target="85">0</span>+</div>
+        <div class="counter-label">Service Vehicles</div>
+      </div>
+      <div class="counter-item animate-on-scroll scale-in" style="transition-delay:0.45s">
+        <div class="counter-icon"><i class="fas fa-clock"></i></div>
+        <div class="counter-number"><span class="count" data-target="30">0</span>min</div>
+        <div class="counter-label">Avg. Response Time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-info-section" id="offices">
+  <div class="container">
+    <div class="section-title animate-on-scroll fade-in-up">
+      <h2>Our Office Locations</h2>
+      <p>Visit one of our conveniently located offices for in-person assistance.</p>
+    </div>
+    <div class="offices-grid">
+      <div class="office-card animate-on-scroll fade-in-up" style="transition-delay:0.1s">
+        <div style="width:60px;height:60px;background:rgba(245,158,11,0.1);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:1.5rem;color:#f59e0b"><i class="fas fa-map-marker-alt"></i></div>
+        <h4 style="font-size:1.15rem;margin-bottom:6px">Salem (Headquarters)</h4>
+        <p style="font-size:0.9rem;color:#888;margin-bottom:4px">MMR Complex, Chinna Thirupathi</p>
+        <p style="font-size:0.9rem;color:#888;margin-bottom:16px">near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</p>
+        <div style="display:flex;align-items:center;justify-content:center;gap:8px;color:#666;font-size:0.9rem;margin-bottom:16px"><i class="fab fa-whatsapp" style="color:#25D366"></i> +91 70107 92745</div>
+        <div style="display:flex;gap:10px;justify-content:center">
+          <a href="404.html" class="btn-secondary" style="padding:10px 22px;font-size:0.85rem"><i class="fas fa-directions"></i> Directions</a>
+          <a href="404.html" class="btn-secondary" style="padding:10px 22px;font-size:0.85rem;border-color:#25D366;color:#25D366"><i class="fab fa-whatsapp"></i> Chat</a>
+        </div>
+      </div>
+      <div class="office-card animate-on-scroll fade-in-up" style="transition-delay:0.2s">
+        <div style="width:60px;height:60px;background:rgba(245,158,11,0.1);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:1.5rem;color:#f59e0b"><i class="fas fa-clock"></i></div>
+        <h4 style="font-size:1.15rem;margin-bottom:6px">Working Hours</h4>
+        <div style="text-align:left;max-width:220px;margin:0 auto 16px">
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(0,0,0,0.05);font-size:0.85rem;color:#666"><span>Mon - Fri</span><span style="font-weight:600;color:#333">8:00 AM - 8:00 PM</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(0,0,0,0.05);font-size:0.85rem;color:#666"><span>Saturday</span><span style="font-weight:600;color:#333">9:00 AM - 5:00 PM</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:0.85rem;color:#666"><span>Sunday</span><span style="font-weight:600;color:#ef4444">Emergency Only</span></div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:8px;color:#666;font-size:0.85rem"><i class="fas fa-phone-alt" style="color:#f59e0b"></i> +91 70107 92745</div>
+      </div>
+      <div class="office-card animate-on-scroll fade-in-up" style="transition-delay:0.3s">
+        <div style="width:60px;height:60px;background:rgba(245,158,11,0.1);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:1.5rem;color:#f59e0b"><i class="fas fa-headset"></i></div>
+        <h4 style="font-size:1.15rem;margin-bottom:6px">24/7 Support</h4>
+        <p style="font-size:0.9rem;color:#888;margin-bottom:16px">Our team is available around the clock for emergency utility services and urgent inquiries.</p>
+        <div style="display:flex;align-items:center;justify-content:center;gap:8px;color:#666;font-size:0.9rem;margin-bottom:12px"><i class="fas fa-envelope" style="color:#f59e0b"></i> info@thestackly.com</div>
+        <a href="404.html" class="btn-primary" style="padding:10px 24px;font-size:0.85rem;display:inline-flex;gap:8px;text-decoration:none"><i class="fab fa-whatsapp"></i> Contact Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why-choose" id="hours">
+  <div class="container">
+    <div class="section-title animate-on-scroll fade-in-up">
+      <h2>Working Hours</h2>
+      <p>We're available when you need us, with extended hours and 24/7 emergency service.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-features">
+        <div class="animate-on-scroll fade-in-left" style="width:100%">
+          <div class="hours-card">
+            <div class="hours-item"><span class="day">Monday</span><span class="time">8:00 AM - 8:00 PM</span></div>
+            <div class="hours-item"><span class="day">Tuesday</span><span class="time">8:00 AM - 8:00 PM</span></div>
+            <div class="hours-item"><span class="day">Wednesday</span><span class="time">8:00 AM - 8:00 PM</span></div>
+            <div class="hours-item"><span class="day">Thursday</span><span class="time">8:00 AM - 8:00 PM</span></div>
+            <div class="hours-item"><span class="day">Friday</span><span class="time">8:00 AM - 8:00 PM</span></div>
+            <div class="hours-item"><span class="day">Saturday</span><span class="time">9:00 AM - 5:00 PM</span></div>
+            <div class="hours-item closed"><span class="day">Sunday</span><span class="time">Emergency Only</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="why-image animate-on-scroll fade-in-right">
+        <img src="images/1600880292203-757bb62b4baf.webp" alt="Working Hours">
+        <div class="why-experience">
+          <h3>24/7</h3>
+          <p>Emergency Support</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact-cta">
+  <div class="container">
+    <div class="cta-content animate-on-scroll scale-in">
+      <div class="cta-badge"><i class="fas fa-exclamation-triangle"></i> Emergency Service Available</div>
+      <h2>Need Immediate Assistance?</h2>
+      <p>Call our emergency hotline for urgent utility issues. We respond within 30 minutes.</p>
+      <a href="404.html" class="btn-primary"><i class="fas fa-phone-alt"></i> Emergency: +91 70107 92745</a>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter" id="newsletter">
+  <div class="container">
+    <div class="newsletter-content animate-on-scroll scale-in">
+      <h2>Stay Updated</h2>
+      <p>Subscribe to our newsletter for tips, promotions, and industry updates.</p>
+      <form class="newsletter-form" onsubmit="return validateNewsletter(event, 'contactNewsEmail')">
+        <input type="email" id="contactNewsEmail" placeholder="Enter your email address" required>
+        <button type="submit">Subscribe</button>
+        <div class="newsletter-error" style="display:none;width:100%;background:#fff;border-left:4px solid #ef4444;padding:12px 18px;border-radius:8px;color:#dc2626;font-size:0.9rem;align-items:center;gap:10px;box-shadow:0 2px 8px rgba(239,68,68,0.15);margin-top:4px"><i class="fas fa-exclamation-circle" style="font-size:1.1rem"></i> <span></span></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="index.html" class="logo">
+          <img src="images/logo.webp" alt="Stackly">
+        </a>
+        <p>Your trusted partner for comprehensive utility services. We deliver reliable, safe, and sustainable solutions for homes and businesses across the region.</p>
+        <div class="footer-social">
+          <a href="404.html"><i class="fab fa-facebook-f"></i></a>
+          <a href="404.html"><i class="fab fa-twitter"></i></a>
+          <a href="404.html"><i class="fab fa-instagram"></i></a>
+          <a href="404.html"><i class="fab fa-linkedin-in"></i></a>
+          <a href="404.html"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+          <li><a href="blog.html"><i class="fas fa-chevron-right"></i> Blog</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Our Services</h4>
+        <ul class="footer-links">
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Electrical</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Water Supply</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Gas Services</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Solar Energy</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Safety Inspections</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Info</h4>
+        <ul class="footer-contact">
+          <li><i class="fas fa-map-marker-alt"></i> MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</li>
+          <li><i class="fas fa-phone-alt"></i> +91 70107 92745</li>
+          <li><i class="fas fa-envelope"></i> info@thestackly.com</li>
+          <li><i class="fas fa-clock"></i> Mon-Fri: 8AM-8PM | Sat: 9AM-5PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Stackly. All rights reserved. | Designed with <i class="fas fa-heart" style="color:#f59e0b"></i></p>
+    </div>
+  </div>
+</footer>
+
+<button class="go-top" id="goTop"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+function validateNewsletter(e, id) {
+  e.preventDefault();
+  const email = document.getElementById(id).value.trim();
+  const err = e.target.querySelector('.newsletter-error');
+  if (!email.endsWith('@gmail.com')) {
+    err.querySelector('span').textContent = 'Please enter a valid @gmail.com email address';
+    err.style.display = 'flex';
+    return false;
+  }
+  err.style.display = 'none';
+  window.location.href = '404.html';
+  return false;
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+<script src="js/script.js?v=2"></script>
+</body>
+</html>

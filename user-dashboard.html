@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard - Stackly</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/dashboard.css?v=2">
+  <link rel="stylesheet" href="css/responsive.css?v=2">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="dashboard-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <a href="index.html"><img src="images/logo.webp" alt="Stackly" class="logo"></a> 
+    </div>
+    <div class="sidebar-user">
+      <div class="sidebar-user-avatar" id="sidebarAvatar">RK</div>
+      <div class="sidebar-user-info">
+        <h4 id="sidebarName">Rahul Kumar</h4>
+        <span>User Member</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-nav-label">Main Menu</div>
+      <a href="user-dashboard.html" class="sidebar-nav-item active"><i class="fas fa-th-large"></i> Dashboard</a>
+      <a href="user-services.html" class="sidebar-nav-item"><i class="fas fa-concierge-bell"></i> My Services</a>
+      <a href="user-invoices.html" class="sidebar-nav-item"><i class="fas fa-file-invoice"></i> Invoices <span class="badge">3</span></a>
+      <a href="user-appointments.html" class="sidebar-nav-item"><i class="fas fa-calendar-check"></i> Appointments</a>
+      <a href="user-tickets.html" class="sidebar-nav-item"><i class="fas fa-headset"></i> Support Tickets</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="signin.html" class="sidebar-nav-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-content">
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <i class="fas fa-bars" style="font-size:1.2rem;color:#888;cursor:pointer;display:none" id="menuToggle"></i>
+        <div>
+          <h2>User Dashboard</h2>
+          <p id="welcomeMsg">Welcome back!</p>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-mail"><i class="fas fa-envelope"></i> <span id="displayEmail">user@email.com</span></div>
+        <a href="404.html" class="topbar-notif"><i class="fas fa-bell"></i> <span class="notif-dot"></span></a>
+      </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+      <div class="page-header">
+        <div>
+          <h2>Overview</h2>
+          <p>Your utility services at a glance</p>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon amber"><i class="fas fa-bolt"></i></div>
+          </div>
+          <div class="stat-card-value">4</div>
+          <div class="stat-card-label">Active Services</div>
+          <div class="stat-card-change up"><i class="fas fa-arrow-up"></i> 1 new this month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon red"><i class="fas fa-file-invoice"></i></div>
+          </div>
+          <div class="stat-card-value">$248</div>
+          <div class="stat-card-label">Pending Invoices</div>
+          <div class="stat-card-change down"><i class="fas fa-arrow-down"></i> Due in 5 days</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon blue"><i class="fas fa-calendar-check"></i></div>
+          </div>
+          <div class="stat-card-value">2</div>
+          <div class="stat-card-label">Upcoming Appointments</div>
+          <div class="stat-card-change up"><i class="fas fa-arrow-up"></i> Next: Tomorrow</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon green"><i class="fas fa-ticket-alt"></i></div>
+          </div>
+          <div class="stat-card-value">1</div>
+          <div class="stat-card-label">Open Tickets</div>
+          <div class="stat-card-change up"><i class="fas fa-arrow-up"></i> Awaiting response</div>
+        </div>
+      </div>
+
+      <!-- CHARTS + RECENT ACTIVITY -->
+      <div class="charts-grid">
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fas fa-chart-line" style="color:#f59e0b;margin-right:8px"></i>Usage Overview (Last 6 Months)</h3>
+          </div>
+          <div class="card-body">
+            <div style="height:260px"><canvas id="usageChart"></canvas></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fas fa-clock" style="color:#f59e0b;margin-right:8px"></i>Recent Activity</h3>
+          </div>
+          <div class="card-body">
+            <div class="activity-list">
+              <div class="activity-item">
+                <span class="activity-dot green"></span>
+                <div class="activity-content">
+                  <p>Service appointment completed</p>
+                  <span>2 hours ago</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <span class="activity-dot amber"></span>
+                <div class="activity-content">
+                  <p>Invoice #INV-2024-1289 generated</p>
+                  <span>Yesterday at 3:45 PM</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <span class="activity-dot blue"></span>
+                <div class="activity-content">
+                  <p>Support ticket #TK-567 opened</p>
+                  <span>2 days ago</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <span class="activity-dot green"></span>
+                <div class="activity-content">
+                  <p>Payment of $189.50 confirmed</p>
+                  <span>3 days ago</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <span class="activity-dot red"></span>
+                <div class="activity-content">
+                  <p>Appointment rescheduled to Jul 5</p>
+                  <span>5 days ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MY SERVICES + UPCOMING -->
+      <div class="charts-grid">
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fas fa-concierge-bell" style="color:#f59e0b;margin-right:8px"></i>My Services</h3>
+            <a href="404.html">View All</a>
+          </div>
+          <div class="card-body">
+            <div class="service-list">
+              <div class="service-item">
+                <div class="service-item-icon elec"><i class="fas fa-bolt"></i></div>
+                <div class="service-item-info">
+                  <h4>Electrical Maintenance</h4>
+                  <p>Plan: Premium • Next visit: Jul 12</p>
+                </div>
+                <span class="status-badge active">Active</span>
+              </div>
+              <div class="service-item">
+                <div class="service-item-icon water"><i class="fas fa-tint"></i></div>
+                <div class="service-item-info">
+                  <h4>Water Supply</h4>
+                  <p>Plan: Standard • Monthly charge: $42</p>
+                </div>
+                <span class="status-badge active">Active</span>
+              </div>
+              <div class="service-item">
+                <div class="service-item-icon gas"><i class="fas fa-fire"></i></div>
+                <div class="service-item-info">
+                  <h4>Gas Line Safety</h4>
+                  <p>Plan: Basic • Next inspection: Aug 3</p>
+                </div>
+                <span class="status-badge active">Active</span>
+              </div>
+              <div class="service-item">
+                <div class="service-item-icon solar"><i class="fas fa-sun"></i></div>
+                <div class="service-item-info">
+                  <h4>Solar Energy Monitoring</h4>
+                  <p>Plan: Pro • 4.2 kW output today</p>
+                </div>
+                <span class="status-badge active">Active</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fas fa-calendar-alt" style="color:#f59e0b;margin-right:8px"></i>Upcoming Appointments</h3>
+            <a href="404.html">Schedule <i class="fas fa-plus"></i></a>
+          </div>
+          <div class="card-body">
+            <div class="appointment-item">
+              <div class="appointment-date">
+                <span class="day">12</span>
+                <span class="month">Jul</span>
+              </div>
+              <div class="appointment-info">
+                <h4>Electrical System Checkup</h4>
+                <p>09:00 AM - 11:00 AM • Technician: Suresh</p>
+              </div>
+              <span class="status-badge pending">Upcoming</span>
+            </div>
+            <div class="appointment-item">
+              <div class="appointment-date">
+                <span class="day">18</span>
+                <span class="month">Jul</span>
+              </div>
+              <div class="appointment-info">
+                <h4>Solar Panel Cleaning</h4>
+                <p>02:00 PM - 04:00 PM • Technician: Raj</p>
+              </div>
+              <span class="status-badge pending">Upcoming</span>
+            </div>
+            <div class="appointment-item">
+              <div class="appointment-date">
+                <span class="day">03</span>
+                <span class="month">Aug</span>
+              </div>
+              <div class="appointment-info">
+                <h4>Gas Line Inspection</h4>
+                <p>10:00 AM - 12:00 PM • Technician: Amit</p>
+              </div>
+              <span class="status-badge pending">Upcoming</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECENT INVOICES -->
+      <div class="card">
+        <div class="card-header">
+          <h3><i class="fas fa-file-invoice" style="color:#f59e0b;margin-right:8px"></i>Recent Invoices</h3>
+          <a href="404.html">View All</a>
+        </div>
+        <div class="card-body">
+          <div class="table-wrapper">
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th>Invoice</th>
+                  <th>Service</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>#INV-2024-1289</strong></td>
+                  <td>Electrical Maintenance</td>
+                  <td>$89.50</td>
+                  <td>Jun 25, 2026</td>
+                  <td><span class="status-badge pending">Pending</span></td>
+                </tr>
+                <tr>
+                  <td><strong>#INV-2024-1276</strong></td>
+                  <td>Water Supply - Monthly</td>
+                  <td>$42.00</td>
+                  <td>Jun 20, 2026</td>
+                  <td><span class="status-badge active">Paid</span></td>
+                </tr>
+                <tr>
+                  <td><strong>#INV-2024-1255</strong></td>
+                  <td>Gas Line Safety</td>
+                  <td>$58.00</td>
+                  <td>Jun 15, 2026</td>
+                  <td><span class="status-badge active">Paid</span></td>
+                </tr>
+                <tr>
+                  <td><strong>#INV-2024-1233</strong></td>
+                  <td>Solar Energy Pro Plan</td>
+                  <td>$129.00</td>
+                  <td>Jun 10, 2026</td>
+                  <td><span class="status-badge completed">Refunded</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const email = localStorage.getItem('userEmail');
+  if (email) {
+    document.getElementById('displayEmail').textContent = email;
+    document.getElementById('sidebarName').textContent = email;
+    document.getElementById('sidebarAvatar').textContent = email.charAt(0).toUpperCase();
+  }
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+  let sidebarBackdrop = document.querySelector('.sidebar-backdrop');
+  if (!sidebarBackdrop) {
+    sidebarBackdrop = document.createElement('div');
+    sidebarBackdrop.className = 'sidebar-backdrop';
+    document.body.appendChild(sidebarBackdrop);
+  }
+  const setSidebar = (open) => {
+    sidebar.classList.toggle('open', open);
+    sidebarBackdrop.classList.toggle('show', open);
+    if (menuToggle) menuToggle.setAttribute('aria-expanded', String(open));
+  };
+  if (menuToggle) {
+    menuToggle.setAttribute('aria-label', 'Toggle sidebar');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.addEventListener('click', () => setSidebar(!sidebar.classList.contains('open')));
+  }
+  sidebarBackdrop.addEventListener('click', () => setSidebar(false));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setSidebar(false);
+  });
+  document.querySelectorAll('.sidebar-nav-item').forEach(item => {
+    item.addEventListener('click', function() {
+      document.querySelectorAll('.sidebar-nav-item').forEach(i => i.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  const ctx = document.getElementById('usageChart');
+  if (ctx) {
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Electricity (kWh)',
+          data: [420, 380, 450, 410, 390, 440],
+          borderColor: '#f59e0b',
+          backgroundColor: 'rgba(245,158,11,0.1)',
+          fill: true,
+          tension: 0.4,
+          pointBackgroundColor: '#f59e0b',
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2,
+          pointRadius: 4,
+        }, {
+          label: 'Water (kL)',
+          data: [28, 32, 26, 30, 24, 29],
+          borderColor: '#3b82f6',
+          backgroundColor: 'rgba(59,130,246,0.1)',
+          fill: true,
+          tension: 0.4,
+          pointBackgroundColor: '#3b82f6',
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2,
+          pointRadius: 4,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { font: { size: 11 } } },
+          x: { grid: { display: false }, ticks: { font: { size: 11 } } }
+        }
+      }
+    });
+  }
+});
+</script>
+
+</body>
+</html>
