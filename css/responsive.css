@@ -229,10 +229,16 @@ section[id] { scroll-margin-top: 84px; }
 
 /* ===== TABLET + MOBILE 768-991: frosted nav, premium menu, hero image, off-canvas dashboards ===== */
 @media (max-width: 991px) {
-  /* Use `clip` (not `hidden`): it stops horizontal scrolling without turning
-     html/body into a scroll container, which would interfere with the fixed
-     off-canvas dashboard sidebar and viewport (dvh) sizing. */
-  html, body { overflow-x: clip; }
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .dashboard-layout, .main-content, .page-content {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 
   .header {
     background: rgba(22, 24, 46, 0.55);
@@ -287,6 +293,25 @@ section[id] { scroll-margin-top: 84px; }
   .hero-float-card.fc-2 { left: 8px; bottom: 14%; }
   .hero-float-card.fc-3 { display: none; }
   .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; max-width: 430px; margin: 40px auto 0; }
+
+  /* Dashboard mobile sidebar full-height pinning & dark background fallback */
+  .sidebar {
+    top: 0 !important;
+    bottom: 0 !important;
+    height: 100% !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 100% !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    min-height: -webkit-fill-available !important;
+    background-color: #16213e !important;
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%) !important;
+  }
+  .sidebar-footer {
+    background-color: #16213e !important;
+    padding-bottom: max(20px, env(safe-area-inset-bottom, 20px)) !important;
+  }
 }
 
 @keyframes menuDrop { from { opacity: 0; transform: translateY(-18px) scale(0.99); } to { opacity: 1; transform: translateY(0) scale(1); } }

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Services - Stackly</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="css/dashboard.css?v=25">
-  <link rel="stylesheet" href="css/responsive.css?v=25">
+  <link rel="stylesheet" href="css/dashboard.css?v=28">
+  <link rel="stylesheet" href="css/responsive.css?v=27">
 </head>
 <body>
 <div class="dashboard-layout">
@@ -64,14 +64,14 @@
         <a href="404.html" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#f59e0b,#f97316);color:#fff;padding:10px 22px;border-radius:12px;font-weight:600;font-size:0.9rem;border:none;cursor:pointer;text-decoration:none"><i class="fas fa-plus"></i> Add Service</a>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-bottom:30px">
+      <div class="service-cards">
         <div class="card">
           <div class="card-header">
             <h3><i class="fas fa-bolt" style="color:#f59e0b;margin-right:8px"></i> Electrical Maintenance</h3>
             <span class="status-badge active">Active</span>
           </div>
           <div class="card-body">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div class="service-details">
               <div><span style="font-size:0.78rem;color:#888">Plan</span><p style="font-weight:600;color:#1a1a2e">Premium</p></div>
               <div><span style="font-size:0.78rem;color:#888">Next Visit</span><p style="font-weight:600;color:#1a1a2e">Jul 12, 2026</p></div>
               <div><span style="font-size:0.78rem;color:#888">Monthly Cost</span><p style="font-weight:600;color:#1a1a2e">$89.50</p></div>
@@ -90,7 +90,7 @@
             <span class="status-badge active">Active</span>
           </div>
           <div class="card-body">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div class="service-details">
               <div><span style="font-size:0.78rem;color:#888">Plan</span><p style="font-weight:600;color:#1a1a2e">Standard</p></div>
               <div><span style="font-size:0.78rem;color:#888">Monthly Charge</span><p style="font-weight:600;color:#1a1a2e">$42.00</p></div>
               <div><span style="font-size:0.78rem;color:#888">Usage</span><p style="font-weight:600;color:#1a1a2e">12,000 L</p></div>
@@ -109,7 +109,7 @@
             <span class="status-badge active">Active</span>
           </div>
           <div class="card-body">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div class="service-details">
               <div><span style="font-size:0.78rem;color:#888">Plan</span><p style="font-weight:600;color:#1a1a2e">Basic</p></div>
               <div><span style="font-size:0.78rem;color:#888">Next Inspection</span><p style="font-weight:600;color:#1a1a2e">Aug 3, 2026</p></div>
               <div><span style="font-size:0.78rem;color:#888">Monthly Cost</span><p style="font-weight:600;color:#1a1a2e">$58.00</p></div>
@@ -128,7 +128,7 @@
             <span class="status-badge active">Active</span>
           </div>
           <div class="card-body">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div class="service-details">
               <div><span style="font-size:0.78rem;color:#888">Plan</span><p style="font-weight:600;color:#1a1a2e">Pro</p></div>
               <div><span style="font-size:0.78rem;color:#888">Today's Output</span><p style="font-weight:600;color:#1a1a2e">4.2 kW</p></div>
               <div><span style="font-size:0.78rem;color:#888">Monthly Savings</span><p style="font-weight:600;color:#1a1a2e">$34.00</p></div>
