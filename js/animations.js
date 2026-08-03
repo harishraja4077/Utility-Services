@@ -88,33 +88,11 @@
     });
   }
 
-  var mm = gsap.matchMedia();
-
-  mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', function () {
-    var track = document.querySelector('.hscroll-inner');
-    if (!track) return;
-
-    var getScrollAmount = function () { return track.scrollWidth - window.innerWidth; };
-
-    var tween = gsap.to(track, {
-      x: function () { return -getScrollAmount(); },
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.hscroll-section',
-        start: 'top top',
-        end: function () { return '+=' + getScrollAmount(); },
-        pin: true,
-        scrub: 1,
-        anticipatePin: 1,
-        invalidateOnRefresh: true
-      }
-    });
-
-    return function () {
-      tween.scrollTrigger.kill();
-      tween.kill();
-    };
-  });
+  /* FIX: Removed the GSAP ScrollTrigger pinned horizontal-scroll tween that
+     translated .hscroll-inner with a CSS transform. That made every card past
+     the viewport width unreachable when GSAP did not load or the media query
+     did not apply. The testimonials track now uses a native overflow-x scroll
+     (see css/theme.css), so no JavaScript is required for the cards to scroll. */
 
   if (canHover) {
     document.querySelectorAll('.spotlight').forEach(function (card) {

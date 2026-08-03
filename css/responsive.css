@@ -32,8 +32,9 @@ html.no-scroll, body.no-scroll { overflow: hidden; }
   .footer { padding: 60px 0 0; }
   .services, .why-choose, .process, .testimonials, .pricing, .blog-section,
   .cta-section, .about-intro, .mission-vision, .team-section, .timeline,
-  .services-detailed, .contact-info-section, .map-section, .blog-page {
-    padding: 80px 0;
+  .services-detailed, .contact-info-section, .map-section, .blog-page,
+  .split-section, .stats-section, .timeline-section, .hscroll-section {
+    padding: 60px 0;
   }
 }
 
@@ -165,7 +166,7 @@ html.no-scroll, body.no-scroll { overflow: hidden; }
   .split-title p { font-size: 1rem; }
   .reveal-item h4 { font-size: 1rem; }
   .rev-icon { width: 48px; height: 48px; min-width: 48px; font-size: 1.2rem; }
-  .bento-grid { grid-auto-rows: 200px; }
+  .bento-grid { grid-auto-rows: minmax(200px, auto); }
   .bento-feat { min-height: 300px; }
   .hscroll-inner { gap: 16px; }
   .hscroll-card { padding: 26px 20px; }
@@ -306,7 +307,7 @@ section[id] { scroll-margin-top: 84px; }
   .services, .why-choose, .process, .testimonials, .pricing, .blog-section,
   .cta-section, .about-intro, .mission-vision, .team-section, .timeline,
   .services-detailed, .contact-info-section, .map-section, .blog-page,
-  .split-section, .stats-section, .timeline-section { padding: 64px 0; }
+  .split-section, .stats-section, .timeline-section, .hscroll-section { padding: 44px 0; }
 
   .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
 
@@ -320,20 +321,4 @@ section[id] { scroll-margin-top: 84px; }
 
   .chart-placeholder { height: 220px; }
   .table-wrapper { -webkit-overflow-scrolling: touch; }
-}
-
-/* ===== Testimonials: stack cards so all are visible below desktop ===== */
-@media (max-width: 1023px) {
-  .hscroll-section { height: auto; padding: 80px 0; overflow: visible; }
-  .hscroll-inner { flex-direction: column; width: 100%; overflow: visible; gap: 20px; padding: 24px 20px 40px; }
-  .hscroll-card, .hscroll-feature { width: 100%; }
-  .hscroll-feature { padding: 34px 24px; }
-}
-
-/* ===== Testimonials: reduced-motion fallback (no GSAP pin on desktop) ===== */
-@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
-  .hscroll-section { height: auto; padding: 80px 0; overflow: visible; }
-  .hscroll-inner { flex-direction: column; width: 100%; overflow: visible; gap: 20px; padding: 24px 20px 40px; }
-  .hscroll-card, .hscroll-feature { width: 100%; }
-  .hscroll-feature { padding: 34px 24px; }
 }

@@ -27,11 +27,12 @@ html.lenis, html.lenis body { height: auto; }
 
 /* ===== BENTO GRID ===== */
 .bento-section { background: #fff; }
-.bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 205px; gap: 22px; grid-template-areas: "feat feat water gas" "feat feat solar maint" "safe safe emerg emerg"; }
+.bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(205px, auto); gap: 22px; grid-template-areas: "feat feat water gas" "feat feat solar maint" "safe safe emerg emerg"; }
 .bento-feat { grid-area: feat; }
 .bento-safe { grid-area: safe; }
 .bento-emerg { grid-area: emerg; }
 .bento-card { position: relative; border-radius: 24px; padding: 32px; overflow: hidden; background: #fff; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 8px 30px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: flex-end; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s; }
+.bento-grid > .bento-card:not(.bento-feat) { justify-content: flex-start; }
 .bento-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(0,0,0,0.12); }
 .bento-content { position: relative; z-index: 2; }
 .bento-icon { width: 52px; height: 52px; border-radius: 14px; background: linear-gradient(135deg, rgba(245,158,11,0.14), rgba(249,115,22,0.14)); color: #f59e0b; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; margin-bottom: 14px; transition: transform 0.4s; }
@@ -63,7 +64,7 @@ html.lenis, html.lenis body { height: auto; }
 .spotlight:hover::before { opacity: 1; }
 
 /* ===== STICKY SPLIT / REVEAL ITEMS ===== */
-.split-section { padding: 120px 0; background: #f8f9fa; }
+.split-section { padding: 80px 0; background: #f8f9fa; }
 .split-grid { display: grid; grid-template-columns: 1fr 1.08fr; gap: 70px; align-items: start; }
 .split-sticky { position: sticky; top: 110px; }
 .split-title { text-align: left; margin-bottom: 36px; }
@@ -84,7 +85,7 @@ html.lenis, html.lenis body { height: auto; }
 .reveal-item p { color: #6b7280; font-size: 0.93rem; line-height: 1.6; }
 
 /* ===== STATS / FLOATING TILT CARDS ===== */
-.stats-section { padding: 110px 0; background: linear-gradient(135deg, #1a1a2e, #16213e); position: relative; overflow: hidden; }
+.stats-section { padding: 80px 0; background: linear-gradient(135deg, #1a1a2e, #16213e); position: relative; overflow: hidden; }
 .stats-section::before { content: ''; position: absolute; inset: 0; background: url('../images/1581092160562-40aa08e78837.webp') center/cover no-repeat; opacity: 0.06; }
 .stats-section .section-title h2 { color: #fff; }
 .stats-section .section-title p { color: rgba(255,255,255,0.65); }
@@ -96,7 +97,7 @@ html.lenis, html.lenis body { height: auto; }
 .stat-label { color: rgba(255,255,255,0.75); margin-top: 10px; font-size: 0.95rem; }
 
 /* ===== TIMELINE ===== */
-.timeline-section { padding: 120px 0; background: #fff; overflow: hidden; }
+.timeline-section { padding: 80px 0; background: #fff; overflow: hidden; }
 .timeline-rail { position: relative; max-width: 980px; margin: 0 auto; padding: 20px 0; }
 .timeline-rail::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; transform: translateX(-50%); background: rgba(245, 158, 11, 0.16); border-radius: 2px; }
 .timeline-progress { position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; transform: translateX(-50%) scaleY(0); transform-origin: top; background: linear-gradient(180deg, #f59e0b, #f97316); border-radius: 2px; z-index: 2; }
@@ -111,13 +112,45 @@ html.lenis, html.lenis body { height: auto; }
 .t-card h4 { font-size: 1.25rem; margin-bottom: 9px; color: #1a1a2e; }
 .t-card p { color: #6b7280; font-size: 0.94rem; line-height: 1.7; }
 
-/* ===== HORIZONTAL SCROLL (pinned) ===== */
-.hscroll-section { position: relative; height: 100vh; display: flex; flex-direction: column; justify-content: center; overflow: hidden; background: #f8f9fa; }
-.hscroll-head { padding-top: 30px; }
+/* ===== HORIZONTAL SCROLL (testimonials) ===== */
+/* FIX: native horizontal scroller replaces the GSAP pinned/transform scroll.
+   Cards are laid out with flex-wrap: nowrap and flex: 0 0 auto so they can
+   never shrink, overlap, or be pushed out of reach. No overflow: hidden on
+   the section, so no card is ever clipped by a parent. */
+.hscroll-section { position: relative; height: auto; padding: 80px 0; display: flex; flex-direction: column; justify-content: center; overflow: visible; background: #f8f9fa; }
+.hscroll-head { padding-top: 0; }
 .hscroll-head .section-title { margin-bottom: 10px; }
-.hscroll-inner { display: flex; gap: 28px; padding: 30px 8vw 40px; width: auto; overflow-x: auto; scrollbar-width: none; will-change: transform; }
-.hscroll-inner::-webkit-scrollbar { display: none; }
-.hscroll-card { width: 430px; flex-shrink: 0; background: #fff; border-radius: 24px; padding: 42px; box-shadow: 0 10px 40px rgba(0,0,0,0.07); border: 1px solid rgba(0,0,0,0.04); }
+
+/* Track: one horizontal row, nowrap, scrollable. Equal gap between cards. */
+.hscroll-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 28px;
+  padding: 30px clamp(20px, 5vw, 90px) 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(245, 158, 11, 0.6) rgba(0, 0, 0, 0.06);
+}
+.hscroll-inner::-webkit-scrollbar { height: 8px; }
+.hscroll-inner::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.06); border-radius: 99px; }
+.hscroll-inner::-webkit-scrollbar-thumb { background: rgba(245, 158, 11, 0.6); border-radius: 99px; }
+
+/* Cards: fixed width, never shrink (flex: 0 0 auto), snap-aligned. */
+.hscroll-card {
+  flex: 0 0 auto;
+  width: 430px;
+  max-width: 86vw;
+  scroll-snap-align: start;
+  background: #fff;
+  border-radius: 24px;
+  padding: 42px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.07);
+  border: 1px solid rgba(0,0,0,0.04);
+}
 .hscroll-quote { font-size: 2rem; color: #f59e0b; margin-bottom: 18px; }
 .hscroll-stars { color: #f59e0b; font-size: 1rem; margin-bottom: 16px; letter-spacing: 3px; }
 .hscroll-card .htext { color: #4b5563; line-height: 1.8; font-size: 1rem; font-style: italic; margin-bottom: 26px; }
@@ -125,7 +158,19 @@ html.lenis, html.lenis body { height: auto; }
 .hscroll-author img { width: 54px; height: 54px; border-radius: 50%; object-fit: cover; }
 .hscroll-author h5 { font-size: 1rem; color: #1a1a2e; }
 .hscroll-author span { font-size: 0.82rem; color: #9ca3af; }
-.hscroll-feature { width: 560px; background: linear-gradient(135deg, #1a1a2e, #0f3460); color: #fff; display: flex; flex-direction: column; justify-content: center; border: none; }
+.hscroll-feature {
+  flex: 0 0 auto;
+  width: 560px;
+  max-width: 86vw;
+  scroll-snap-align: start;
+  padding: 42px;
+  background: linear-gradient(135deg, #1a1a2e, #0f3460);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: none;
+}
 .hscroll-feature h3 { font-size: 2.1rem; line-height: 1.25; margin-bottom: 16px; }
 .hscroll-feature p { color: rgba(255,255,255,0.72); margin-bottom: 26px; line-height: 1.7; }
 .hscroll-feature .btn-primary { width: fit-content; }
@@ -201,7 +246,7 @@ html.lenis, html.lenis body { height: auto; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
-  .bento-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 210px; grid-template-areas: "feat feat" "water gas" "solar maint" "safe safe" "emerg emerg"; }
+  .bento-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: minmax(210px, auto); grid-template-areas: "feat feat" "water gas" "solar maint" "safe safe" "emerg emerg"; }
   .bento-feat h3 { font-size: 1.7rem; }
   .split-grid { grid-template-columns: 1fr; }
   .split-sticky { position: static; }
@@ -215,7 +260,7 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 @media (max-width: 768px) {
-  .bento-grid { grid-template-columns: 1fr; grid-template-areas: "feat" "water" "gas" "solar" "maint" "safe" "emerg"; grid-auto-rows: 240px; }
+  .bento-grid { grid-template-columns: 1fr; grid-template-areas: "feat" "water" "gas" "solar" "maint" "safe" "emerg"; grid-auto-rows: minmax(240px, auto); }
   .bento-feat { min-height: 340px; }
   .timeline-rail::before, .timeline-progress { left: 24px; }
   .t-step, .t-step:nth-child(even) { width: 100%; margin-left: 0; padding: 20px 0 20px 72px; }
@@ -224,8 +269,6 @@ html.lenis, html.lenis body { height: auto; }
   .hero-float-card.fc-2 { left: 8px; }
   .hero-float-card.fc-3 { display: none; }
   .stats-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
-  .hscroll-section { height: auto; padding: 80px 0; }
-  .hscroll-inner { padding-left: 20px; padding-right: 20px; }
   .hscroll-card, .hscroll-feature { width: 320px; padding: 30px; }
   .hscroll-feature h3 { font-size: 1.6rem; }
 }

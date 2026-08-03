@@ -104,11 +104,11 @@
         <div class="card-header">
           <h3><i class="fas fa-list" style="color:#f59e0b;margin-right:8px"></i> All Invoices</h3>
           <div style="display:flex;gap:8px">
-            <select style="padding:6px 12px;border:1px solid #e0e0e0;border-radius:8px;font-size:0.85rem;color:#444;background:#fff;font-family:inherit">
-              <option>All Status</option>
-              <option>Paid</option>
-              <option>Pending</option>
-              <option>Overdue</option>
+            <select id="statusFilter" style="padding:6px 12px;border:1px solid #e0e0e0;border-radius:8px;font-size:0.85rem;color:#444;background:#fff;font-family:inherit">
+              <option value="all">All Status</option>
+              <option value="Paid">Paid</option>
+              <option value="Pending">Pending</option>
+              <option value="Overdue">Overdue</option>
             </select>
           </div>
         </div>
@@ -204,6 +204,28 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('displayEmail').textContent = email;
     document.getElementById('sidebarName').textContent = email;
     document.getElementById('sidebarAvatar').textContent = email.charAt(0).toUpperCase();
+  }
+  const statusFilter = document.getElementById('statusFilter');
+  const invoiceRows = document.querySelectorAll('.dashboard-table tbody tr');
+  const applyFilter = (value) => {
+    invoiceRows.forEach(row => {
+      const statusEl = row.querySelector('.status-badge');
+      const status = statusEl ? statusEl.textContent.trim() : '';
+      row.style.display = (value === 'all' || status === value) ? '' : 'none';
+    });
+    const params = new URLSearchParams(window.location.search);
+    if (value === 'all') params.delete('status');
+    else params.set('status', value);
+    const qs = params.toString();
+    try { history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : '')); } catch (e) {}
+  };
+  if (statusFilter) {
+    const fromUrl = new URLSearchParams(window.location.search).get('status');
+    if (fromUrl && Array.from(statusFilter.options).some(o => o.value === fromUrl)) {
+      statusFilter.value = fromUrl;
+    }
+    applyFilter(statusFilter.value);
+    statusFilter.addEventListener('change', () => applyFilter(statusFilter.value));
   }
   const menuToggle = document.getElementById('menuToggle');
   const sidebar = document.getElementById('sidebar');
