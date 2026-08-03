@@ -7,7 +7,7 @@
    ===================================================================== */
 
 /* ---- Helpers ---- */
-html.no-scroll, body.no-scroll { overflow: hidden; }
+html.no-scroll, body.no-scroll { overflow: hidden; overscroll-behavior: none; }
 
 /* ===== DESKTOP 1200-1439 ===== */
 @media (min-width: 1200px) and (max-width: 1439px) {
@@ -229,7 +229,10 @@ section[id] { scroll-margin-top: 84px; }
 
 /* ===== TABLET + MOBILE 768-991: frosted nav, premium menu, hero image, off-canvas dashboards ===== */
 @media (max-width: 991px) {
-  html, body { overflow-x: hidden; overflow-x: clip; }
+  /* Use `clip` (not `hidden`): it stops horizontal scrolling without turning
+     html/body into a scroll container, which would interfere with the fixed
+     off-canvas dashboard sidebar and viewport (dvh) sizing. */
+  html, body { overflow-x: clip; }
 
   .header {
     background: rgba(22, 24, 46, 0.55);
@@ -284,12 +287,6 @@ section[id] { scroll-margin-top: 84px; }
   .hero-float-card.fc-2 { left: 8px; bottom: 14%; }
   .hero-float-card.fc-3 { display: none; }
   .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; max-width: 430px; margin: 40px auto 0; }
-
-  /* Dashboard: transform-based off-canvas sidebar */
-  .sidebar { width: 270px; transform: translateX(-105%); transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 12px 0 40px rgba(0, 0, 0, 0.25); }
-  .sidebar.open { transform: translateX(0); }
-  .sidebar-backdrop { backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
-  .sidebar-nav-item { padding: 14px 16px; }
 }
 
 @keyframes menuDrop { from { opacity: 0; transform: translateY(-18px) scale(0.99); } to { opacity: 1; transform: translateY(0) scale(1); } }

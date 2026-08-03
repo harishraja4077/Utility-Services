@@ -1,24 +1,43 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; overflow-x: hidden; }
+
+/* Root background matches the dashboard content color so no pure-white canvas can
+   ever show through at the bottom/edges of the fixed sidebar (overscroll bounce,
+   address-bar resize). `body` alone does not paint the overscroll areas. */
+html { background: #f0f2f5; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; }
+
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
-.dashboard-layout { display: flex; min-height: 100vh; }
+/* Layout wrapper shares the same background as html/body so there is no mismatched
+   light/white patch behind the fixed sidebar when the mobile drawer is open. */
+.dashboard-layout { display: flex; min-height: 100vh; min-height: 100dvh; background: #f0f2f5; }
 
 /* ===== SIDEBAR ===== */
-.sidebar { width: 270px; background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%); position: fixed; top: 0; left: 0; height: 100vh; z-index: 1000; display: flex; flex-direction: column; transition: all 0.3s ease; box-shadow: 4px 0 20px rgba(0,0,0,0.1); }
-.sidebar-brand { padding: 25px 20px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; gap: 12px; }
-.sidebar-brand .logo { height: 120px; width: auto; }
+/* FIX: No vh unit at all - the drawer is pinned with top:0 AND bottom:0 only, so it
+   ALWAYS stretches to the exact visible viewport on every device/browser. height:100vh
+   and height:100dvh can still compute wrong when the address bar shows/hides or in
+   browsers without dvh support, which is what left the gap (white strip) at the bottom.
+   With offset-based stretching the dark background always reaches the very bottom of the
+   screen and the drawer fits any display. The drawer scrolls internally (overflow-y)
+   while the page stays fixed. */
+.sidebar { position: fixed; top: 0; bottom: 0; left: 0; width: 280px; z-index: 1000; display: flex; flex-direction: column; justify-content: space-between; overflow-y: auto; overscroll-behavior-y: contain; background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%); transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease; box-shadow: 4px 0 20px rgba(0,0,0,0.1); }
+.sidebar-brand { flex-shrink: 0; padding: 25px 20px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; gap: 12px; }
+.sidebar-brand .logo { height: 120px; width: auto; max-width: 100%; object-fit: contain; }
 .sidebar-brand span { font-size: 1.4rem; font-weight: 800; color: #fff; }
 .sidebar-brand span span { color: #f59e0b; }
 
-.sidebar-user { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 12px; }
+/* Close button - only shown inside the off-canvas mobile drawer */
+.sidebar-close { position: absolute; top: 18px; right: 14px; width: 36px; height: 36px; border: none; border-radius: 10px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.75); font-size: 1.1rem; line-height: 1; cursor: pointer; display: none; align-items: center; justify-content: center; transition: background 0.3s, color 0.3s; z-index: 2; }
+.sidebar-close:hover { background: rgba(239,68,68,0.2); color: #ef4444; }
+
+.sidebar-user { flex-shrink: 0; padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 12px; }
 .sidebar-user-avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, #f59e0b, #f97316); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; font-size: 1rem; min-width: 42px; }
 .sidebar-user-info { min-width: 0; flex: 1; }
 .sidebar-user-info h4 { font-size: 0.95rem; color: #fff; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sidebar-user-info span { font-size: 0.78rem; color: rgba(255,255,255,0.5); display: block; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-.sidebar-nav { flex: 1; padding: 15px 12px; overflow-y: auto; }
+.sidebar-nav { flex: 1; min-height: 0; padding: 15px 12px; overflow-y: auto; overscroll-behavior-y: contain; }
 .sidebar-nav-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.3); padding: 15px 12px 8px; font-weight: 600; }
 .sidebar-nav-item { display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-radius: 12px; color: rgba(255,255,255,0.6); transition: all 0.3s; cursor: pointer; margin-bottom: 3px; font-size: 0.9rem; font-weight: 500; }
 .sidebar-nav-item i { width: 20px; text-align: center; font-size: 1.05rem; }
@@ -26,18 +45,19 @@ ul { list-style: none; }
 .sidebar-nav-item.active { background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(249,115,22,0.1)); color: #f59e0b; border-left: 3px solid #f59e0b; }
 .sidebar-nav-item .badge { margin-left: auto; background: #ef4444; color: #fff; font-size: 0.7rem; padding: 2px 8px; border-radius: 50px; font-weight: 600; }
 
-.sidebar-footer { padding: 15px 12px; border-top: 1px solid rgba(255,255,255,0.06); }
+.sidebar-footer { flex-shrink: 0; padding: 15px 12px; border-top: 1px solid rgba(255,255,255,0.06); }
 .sidebar-footer .sidebar-nav-item { color: rgba(255,255,255,0.5); }
 .sidebar-footer .sidebar-nav-item:hover { color: #ef4444; background: rgba(239,68,68,0.1); }
 
 /* ===== MAIN CONTENT ===== */
-.main-content { margin-left: 270px; flex: 1; min-height: 100vh; min-width: 0; display: flex; flex-direction: column; }
+.main-content { margin-left: 280px; flex: 1; min-height: 100vh; min-height: 100dvh; min-width: 0; display: flex; flex-direction: column; }
 
 /* ===== TOPBAR ===== */
 .topbar { background: #fff; padding: 0 35px; height: 70px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 10px rgba(0,0,0,0.04); position: sticky; top: 0; z-index: 500; }
 .topbar-left { display: flex; align-items: center; gap: 20px; }
 .topbar-left h2 { font-size: 1.3rem; color: #1a1a2e; font-weight: 700; }
 .topbar-left p { font-size: 0.85rem; color: #888; }
+#menuToggle { display: none; }
 .topbar-right { display: flex; align-items: center; gap: 20px; }
 .topbar-mail { display: flex; align-items: center; gap: 8px; color: #666; font-size: 0.9rem; padding: 8px 16px; background: #f8f9fa; border-radius: 10px; }
 .topbar-mail i { color: #f59e0b; }
@@ -106,7 +126,9 @@ ul { list-style: none; }
 .activity-content span { font-size: 0.78rem; color: #999; display: block; margin-top: 3px; }
 
 /* ===== SIDEBAR BACKDROP (mobile off-canvas) ===== */
-.sidebar-backdrop { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.55); z-index: 999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+/* Backdrop covers the whole viewport (position:fixed + all four offsets), so no
+   uncovered white edge can appear beside or below the open drawer on any device. */
+.sidebar-backdrop { position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(15, 23, 42, 0.55); z-index: 999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
 .sidebar-backdrop.show { opacity: 1; visibility: visible; }
 
 /* ===== RESPONSIVE ===== */
@@ -116,10 +138,11 @@ ul { list-style: none; }
 }
 
 @media (max-width: 992px) {
-  .sidebar { width: 0; overflow: hidden; }
-  .sidebar.open { width: 270px; }
+  .sidebar { width: 280px; transform: translateX(-100%); box-shadow: none; }
+  .sidebar.open { transform: translateX(0); box-shadow: 12px 0 40px rgba(0, 0, 0, 0.25); }
+  .sidebar-close { display: flex; }
+  #menuToggle { display: block; min-width: 44px; min-height: 44px; cursor: pointer; }
   .main-content { margin-left: 0; }
-  #menuToggle { display: block !important; min-width: 44px; min-height: 44px; cursor: pointer; }
   .topbar { padding: 0 24px; }
   .page-content { padding: 24px; }
   .topbar-mail span { display: none; }

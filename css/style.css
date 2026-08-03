@@ -108,7 +108,7 @@ img { max-width: 100%; height: auto; display: block; }
 /* ===== SERVICES SECTION ===== */
 .services { padding: 80px 0; background: #fff; }
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-.service-card { background: #fff; border-radius: 20px; padding: 40px 30px; text-align: center; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; border: 1px solid rgba(0,0,0,0.05); }
+.service-card { background: #fff; border-radius: 20px; padding: 40px 30px; text-align: center; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; }
 .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, #f59e0b, #f97316); transform: scaleX(0); transform-origin: left; transition: transform 0.5s ease; }
 .service-card:hover::before { transform: scaleX(1); }
 .service-card:hover { transform: translateY(-15px); box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
@@ -117,7 +117,7 @@ img { max-width: 100%; height: auto; display: block; }
 .service-card:hover .service-icon i { color: #fff !important; }
 .service-card h3 { font-size: 1.4rem; margin-bottom: 15px; color: #1a1a2e; }
 .service-card p { color: #666; line-height: 1.7; margin-bottom: 20px; }
-.service-link { color: #f59e0b; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; transition: gap 0.3s; }
+.service-link { color: #f59e0b; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; transition: gap 0.3s; margin-top: auto; }
 .service-card:hover .service-link { gap: 10px; }
 
 /* ===== WHY CHOOSE US ===== */
@@ -187,19 +187,19 @@ img { max-width: 100%; height: auto; display: block; }
 /* ===== BLOG SECTION ===== */
 .blog-section { padding: 80px 0; background: #f8f9fa; }
 .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-.blog-card { background: #fff; border-radius: 20px; overflow: hidden; transition: all 0.4s; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+.blog-card { background: #fff; border-radius: 20px; overflow: hidden; transition: all 0.4s; box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
 .blog-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
 .blog-image { position: relative; overflow: hidden; height: 240px; }
 .blog-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
 .blog-card:hover .blog-image img { transform: scale(1.1); }
 .blog-category { position: absolute; top: 20px; left: 20px; background: linear-gradient(135deg, #f59e0b, #f97316); color: #fff; padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; }
-.blog-content { padding: 30px; }
+.blog-content { padding: 30px; display: flex; flex-direction: column; flex: 1; }
 .blog-meta { display: flex; gap: 20px; font-size: 0.85rem; color: #888; margin-bottom: 15px; }
 .blog-content h3 { font-size: 1.2rem; line-height: 1.5; margin-bottom: 15px; color: #1a1a2e; }
 .blog-content h3 a { transition: color 0.3s; }
 .blog-content h3 a:hover { color: #f59e0b; }
 .blog-content p { color: #666; line-height: 1.7; margin-bottom: 20px; }
-.blog-read-more { color: #f59e0b; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; }
+.blog-read-more { color: #f59e0b; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; margin-top: auto; }
 
 /* ===== CTA SECTION ===== */
 .cta-section { padding: 80px 0; background: linear-gradient(135deg, #1a1a2e, #0f3460); position: relative; overflow: hidden; }

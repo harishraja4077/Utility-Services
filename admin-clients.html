@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Clients - Stackly</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="css/dashboard.css?v=22">
-  <link rel="stylesheet" href="css/responsive.css?v=22">
+  <link rel="stylesheet" href="css/dashboard.css?v=25">
+  <link rel="stylesheet" href="css/responsive.css?v=25">
 </head>
 <body>
 <div class="dashboard-layout">
 
   <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
+    <button type="button" class="sidebar-close" id="sidebarClose" aria-label="Close menu">&times;</button>
     <div class="sidebar-brand">
       <a href="index.html"><img loading="lazy" decoding="async" src="images/logo.webp" alt="Stackly" class="logo"></a>
     </div>
@@ -41,7 +42,7 @@
     <!-- TOPBAR -->
     <header class="topbar">
       <div class="topbar-left">
-        <i class="fas fa-bars" style="font-size:1.2rem;color:#888;cursor:pointer;display:none" id="menuToggle"></i>
+        <i class="fas fa-bars" style="font-size:1.2rem;color:#888;cursor:pointer" id="menuToggle"></i>
         <div>
           <h2>Clients</h2>
           <p>Manage all registered clients</p>
@@ -215,6 +216,8 @@ document.addEventListener('DOMContentLoaded', () => {
     menuToggle.addEventListener('click', () => setSidebar(!sidebar.classList.contains('open')));
   }
   sidebarBackdrop.addEventListener('click', () => setSidebar(false));
+  const sidebarClose = document.getElementById('sidebarClose');
+  if (sidebarClose) sidebarClose.addEventListener('click', () => setSidebar(false));
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') setSidebar(false);
   });
