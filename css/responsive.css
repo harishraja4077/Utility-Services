@@ -312,13 +312,6 @@ section[id] { scroll-margin-top: 84px; }
     background-color: #16213e !important;
     padding-bottom: max(20px, env(safe-area-inset-bottom, 20px)) !important;
   }
-
-  /* Compact sidebar header: bring mailid + main menu up so spacing is even */
-  .sidebar-brand { padding: 14px 20px 12px; }
-  .sidebar-brand .logo { height: 92px; }
-  .sidebar-user { padding: 12px 20px; }
-  .sidebar-nav { padding-top: 4px; }
-  .sidebar-nav-label { padding-top: 10px; }
 }
 
 @keyframes menuDrop { from { opacity: 0; transform: translateY(-18px) scale(0.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
